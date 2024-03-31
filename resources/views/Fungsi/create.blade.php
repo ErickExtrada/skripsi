@@ -62,7 +62,7 @@
                 <div class="mb-3 row">
                     <label for="jurusan" class="col-sm-2 col-form-label">Harga</label>
                     <div class="col-sm-10">
-                        <input type="number" class="form-control" name='harga'  value="{{ Session::get('harga') }}"
+                        <input type="text" class="form-control" name='harga'  value="{{ Session::get('harga') }}"
                             id="harga" readonly>
                     </div>
                 </div>
@@ -101,6 +101,9 @@
     </script>
     {{-- ERROR --}}
     <script>
+        function formatNumberWithComma(number) {
+            return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
         $(document).ready(function() {
             function calculatePrice() {
                 const namaBarang = $('#nama_barang').val();
@@ -112,7 +115,9 @@
                         dataType: 'json',
                         success: function(data) {
                             const harga = data[0].harga;
-                            $('#harga').val(harga * quantity);
+                            const calculateHarga = harga * quantity
+                            const formatHarga = formatNumberWithComma(calculateHarga);
+                            $('#harga').val(formatHarga);
                         },
                         error: function(jqXHR, textStatus, errorThrown) {
                             var errorMsg = 'Error loading products';

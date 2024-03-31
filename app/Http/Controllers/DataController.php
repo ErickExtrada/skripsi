@@ -39,6 +39,13 @@ class DataController extends Controller
         return view('Fungsi.create', compact('kategori'));
     }
 
+    private function formatPriceToNumber($hargaString)
+    {
+        $hargaStringWithoutCommas = str_replace(',', '', $hargaString);
+
+        // Convert the string to a numeric value
+        return (float) $hargaStringWithoutCommas;
+    }
     /**
      * Store a newly created resource in storage.
      */
@@ -62,12 +69,13 @@ class DataController extends Controller
             'harga.required' => 'harga mohon di isi',
         ]);
         $date = new DateTime($request->date);
+        $hargaStr = $request->harga;
         $data = [
             'nama_barang' => $request->nama_barang,
             'kategori_barang' => $request->kategori_barang,
             'quantity' => $request->quantity,
             'keterangan' => $request->keterangan,
-            'harga' => $request->harga,
+            'harga' =>  $this->formatPriceToNumber($hargaStr),
             'date' => $date,
         ];
         Data::create($data);
