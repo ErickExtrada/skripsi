@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
                 'name'=>'Pengelola Gudang 1',
                 'email'=>'pengelolagudang@gmail.com',
                 'role'=>'pengelola_gudang',
-                'password'=>bcrypt('12345678')
+                'password'=>bcrypt('123456')
             ],
             [
                 'name'=>'Administrator 1',
