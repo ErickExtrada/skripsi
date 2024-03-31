@@ -56,85 +56,71 @@ class DatabaseSeeder extends Seeder
 
         $items = [
             [
-                'id_barang' => Str::uuid()->toString(),
                 'nama_barang' => 'Aqua 19Liter',
                 'kode_barang' => 'AQ',
                 'harga' => 49_000,
             ],
             [
-                'id_barang' => Str::uuid()->toString(),
                 'nama_barang' => 'Aqua 1500ML (12)',
                 'kode_barang' => 'AQ',
                 'harga' => 62_000,
             ],
             [
-                'id_barang' => Str::uuid()->toString(),
                 'nama_barang' => 'Aqua 600ML(24)',
                 'kode_barang' => 'AQ',
                 'harga' => 54_950,
             ],
             [
-                'id_barang' => Str::uuid()->toString(),
                 'nama_barang' => 'Aqua 330ML(24)',
                 'kode_barang' => 'AQ',
                 'harga' => 40_000,
             ],
             [
-                'id_barang' => Str::uuid()->toString(),
                 'nama_barang' => 'Aqua 220ML(48)',
                 'kode_barang' => 'AQ',
                 'harga' => 40_000,
             ],
             [
-                'id_barang' => Str::uuid()->toString(),
                 'nama_barang' => 'Mizone Cherry Blossom (12)',
                 'kode_barang' => 'MZ',
                 'harga' => 45_000,
             ],
             [
-                'id_barang' => Str::uuid()->toString(),
                 'nama_barang' => 'Mizone Cranberry (12)',
                 'kode_barang' => 'MZ',
                 'harga' => 45_000,
             ],
             [
-                'id_barang' => Str::uuid()->toString(),
                 'nama_barang' => 'Mizone Lchyee Lemon (12)',
                 'kode_barang' => 'MZ',
                 'harga' => 45_000,
             ],
             [
-                'id_barang' => Str::uuid()->toString(),
                 'nama_barang' => 'Mizone Starfruit (12)',
                 'kode_barang' => 'MZ',
                 'harga' => 45_000,
             ],
             [
-                'id_barang' => Str::uuid()->toString(),
                 'nama_barang' => 'Vit 19Liter',
                 'kode_barang' => 'VT',
                 'harga' => 45_000,
             ],
             [
-                'id_barang' => Str::uuid()->toString(),
                 'nama_barang' => 'Vit 1500ML(12)',
                 'kode_barang' => 'VI1',
                 'harga' => 44_000,
             ],
             [
-                'id_barang' => Str::uuid()->toString(),
                 'nama_barang' => 'Vit 600ML(24)',
                 'kode_barang' => 'VT',
                 'harga' => 43_000,
             ],
             [
-                'id_barang' => Str::uuid()->toString(),
                 'nama_barang' => 'Vit 330 ML(24)',
                 'kode_barang' => 'VT',
                 'harga' => 35_000,
             ],
             [
-                'id_barang' => Str::uuid()->toString(),
                 'nama_barang' => 'Vit 220ML(48)',
                 'kode_barang' => 'VT',
                 'harga' => 30_000,

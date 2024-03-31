@@ -114,7 +114,7 @@
                                 '<option value="">Select Product</option>');
                             $.each(data, function(i, Barang) {
                                 $('#nama_barang').append($('<option>', {
-                                    value: Barang.id_barang,
+                                    value: Barang.nama_barang,
                                     text: Barang.nama_barang,
                                 }));
                             });
@@ -135,11 +135,11 @@
             });
 
             $('#nama_barang').on('change', function() {
-                const idBarang = $(this).val();
+                const namaBarang = $(this).val();
                 const quantity = $('#quantity').val();
-                if (idBarang) {
+                if (namaBarang) {
                     $.ajax({
-                        url: '/price/' + idBarang,
+                        url: '/price/' + namaBarang,
                         type: 'GET',
                         dataType: 'json',
                         success: function(data) {
@@ -165,16 +165,10 @@
             $('#quantity').on('input', function() {
                 const quantity = $(this).val();
                 const harga = $('#harga').val();;
-                // Here you would fetch the harga for the selectedProduct from your data array
-                // For now, let's assume you have a variable named 'items' containing your data array
                 if (harga !== undefined && quantity) {
                     $('#harga').val(harga * quantity);
                 }
             });
-
-            $('#harga').on('change', function () {
-                
-            })
         });
     </script>
 

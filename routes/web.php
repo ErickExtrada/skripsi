@@ -59,7 +59,7 @@ Route::get('/suratjalan', [suratjalanController::class, 'index']);
 // Route::get('/count-items/{kode}', [BarangController::class, 'countItemsByCategory']);
 // Route::get('/nama-barang/{kodeKategori}', [BarangController::class, 'getByKategori']);
 Route::get('/products/{kode_barang}', [BarangController::class, 'getProductsByCategory']);
-Route::get('/price/{id_barang}', [BarangController::class, 'getPriceById']);
+Route::get('/price/{nama_barang}', [BarangController::class, 'getPriceById']);
 
 // Route::get('/',[BarangController::class,'index']);
 // Route::get('/barang/{kode_barang}', 'BarangController@getBarangByKategori');

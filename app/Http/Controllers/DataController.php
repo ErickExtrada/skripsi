@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Data;
 use App\Models\kategori;
+use Barryvdh\Debugbar\Facades\Debugbar;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -42,30 +44,31 @@ class DataController extends Controller
      */
     public function store(Request $request)
     {
-        Session::flash('namabarang', $request->nama_barang);
-        Session::flash('kategoribarang', $request->kategori_barang);
+        Session::flash('nama_barang', $request->nama_barang);
+        Session::flash('kategori_barang', $request->kategori_barang);
         Session::flash('quantity', $request->quantity);
         Session::flash('harga', $request->harga);
 
         $request->validate([
-            'namabarang' => 'required',
-            'kategoribarang' => 'required',
+            'nama_barang' => 'required',
+            'kategori_barang' => 'required',
             'quantity' => 'required',
             'harga' => 'required',
             'date' => 'required',
         ], [
-            'namabarang.required' => 'nama barang mohon di isi',
-            'kategoribarang.required' => 'kategori barang mohon di isi',
+            'nama_barang.required' => 'nama barang mohon di isi',
+            'kategori_barang.required' => 'kategori barang mohon di isi',
             'quantity.required' => 'quantity mohon di isi',
             'harga.required' => 'harga mohon di isi',
         ]);
+        $date = new DateTime($request->date);
         $data = [
-            'nama_barang' => $request->namabarang,
-            'kategori_barang' => $request->kategoribarang,
+            'nama_barang' => $request->nama_barang,
+            'kategori_barang' => $request->kategori_barang,
             'quantity' => $request->quantity,
             'keterangan' => $request->keterangan,
             'harga' => $request->harga,
-            'date' => $request->date,
+            'date' => $date,
         ];
         Data::create($data);
         return redirect()->to('pengelolainput')->with('success', 'Data berhasil di input');

@@ -21,9 +21,9 @@ class BarangController extends Controller
         return response()->json($products);
     }
 
-    public function getPriceById($id_barang)
+    public function getPriceById($nama_barang)
     {
-        $data = Barang::where('id_barang', $id_barang)->get();
+        $data = Barang::where('nama_barang', $nama_barang)->get();
         return response()->json($data);
     }
     // public function countItemsByCategory($kodeBarangFromCategory)

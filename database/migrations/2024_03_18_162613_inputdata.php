@@ -19,6 +19,8 @@ return new class extends Migration
             $table->text('keterangan');
             $table->decimal('harga');
             $table->date('date');
+            $table->date('updated_at');
+            $table->date('created_at');
         });
     }
 
