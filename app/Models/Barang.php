@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Barang extends Model
 {
-    protected $table = 'nama_barang';
+    protected $table = 'barang';
 
     public function Barang()
     {
-        return $this->belongsTo(kategori::class, 'kode_barang', 'kode_barang');
+        return $this->belongsTo(kategori::class, 'nama_barang', 'kode_barang', 'harga');
     }
 }
 

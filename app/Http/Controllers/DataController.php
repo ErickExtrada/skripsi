@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Data;
 use App\Models\kategori;
-use App\Models\KategoriBarang;
+use App\Models\Barang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -18,14 +18,14 @@ class DataController extends Controller
         $katakunci = $request -> katakunci;
         $jumlahbaris = 5;
         if(strlen($katakunci)){
-            $data = Data::where('id','like',"%$katakunci%") 
+            $data = Data::where('id','ike',"%$katakunci%")
             ->orWhere('nama_barang','like', "%$katakunci%")
             ->orWhere('kategori_barang','like',"%$katakunci%")
             ->paginate($jumlahbaris);
         }else{
             $data = Data::all();
             $data = Data::orderby('id', 'desc')->paginate($jumlahbaris);
-        }      
+        }
         return view('Sidebar.inputbarang')->with('data', $data);
     }
 
@@ -35,7 +35,8 @@ class DataController extends Controller
     public function create()
     {
         $kategori = kategori::all();
-        return view('Fungsi.create', compact('kategori'));
+        $barang = barang::all();
+        return view('Fungsi.create', compact('kategori', 'barang'));
     }
 
     /**

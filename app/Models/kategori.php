@@ -10,6 +10,6 @@ class kategori extends Model
 
     public function namaBarangs()
     {
-        return $this->hasMany(Barang::class, 'kode_barang', 'kode_barang');
+        return $this->hasMany(Barang::class, 'kategori_barang', 'kode_barang');
     }
 }

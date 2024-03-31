@@ -43,7 +43,9 @@
                     <div class="col-sm-10">
                         <select name="nama_barang" id="nama_barang" class="form-control input">
                             <option value="">Select Product</option>
-                            {{-- Options will be populated based on category selection --}}
+                            @foreach ($barang as $product)
+                                <option value="{{ $product->kode_barang }}">{{ $product->nama_barang }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
