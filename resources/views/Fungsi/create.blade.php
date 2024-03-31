@@ -43,9 +43,6 @@
                     <div class="col-sm-10">
                         <select name="nama_barang" id="nama_barang" class="form-control input">
                             <option value="">Select Product</option>
-                            @foreach ($barang as $product)
-                                <option value="{{ $product->kode_barang }}">{{ $product->nama_barang }}</option>
-                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -65,8 +62,8 @@
                 <div class="mb-3 row">
                     <label for="jurusan" class="col-sm-2 col-form-label">Harga</label>
                     <div class="col-sm-10">
-                        <input type="number" class="form-control" name='harga' value="{{ Session::get('harga') }}"
-                            id="harga">
+                        <input type="number" class="form-control" name='harga'  value="{{ Session::get('harga') }}"
+                            id="harga" readonly>
                     </div>
                 </div>
                 <div class="mb-3 row">
@@ -117,8 +114,8 @@
                                 '<option value="">Select Product</option>');
                             $.each(data, function(i, Barang) {
                                 $('#nama_barang').append($('<option>', {
-                                    value: Barang.id,
-                                    text: Barang.nama_barang
+                                    value: Barang.id_barang,
+                                    text: Barang.nama_barang,
                                 }));
                             });
                         },
@@ -134,6 +131,53 @@
                     });
                 } else {
                     $('#nama_barang').empty().append('<option value="">Select Category First</option>');
+                }
+            });
+
+            $('#nama_barang').on('change', function() {
+                const idBarang = $(this).val();
+                var quantity = $('#quantity').val();
+                let harga;
+                if (idBarang) {
+                    $.ajax({
+                        url: '/price/' + idBarang,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data) {
+                            harga = data[0].harga;
+                            console.log(harga);
+                            $('#harga').val(harga);
+                            if (harga !== undefined && quantity) {
+                                $('#harga').val(harga * quantity);
+                            }
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            var errorMsg = 'Error loading products';
+                            if (jqXHR.responseJSON && jqXHR.responseJSON.error) {
+                                errorMsg += ': ' + jqXHR.responseJSON.error;
+                            }
+                            $('#nama_barang').empty().append('<option value="">' + errorMsg +
+                                '</option>');
+                            console.error("AJAX error: " + textStatus + ' : ' + errorThrown);
+                        }
+                    });
+                }
+            });
+
+            $('#quantity').on('input', function() {
+                const selectedProduct = $('#nama_barang').val();
+                const quantity = $(this).val();
+                let harga;
+                // Here you would fetch the harga for the selectedProduct from your data array
+                // For now, let's assume you have a variable named 'items' containing your data array
+                items.forEach(function(item) {
+                    if (item.kode_barang === selectedProduct) {
+                        harga = item.harga;
+                        return false; // Break out of the loop once the item is found
+                    }
+                });
+                if (harga !== undefined && quantity) {
+                    $('#harga').val(harga * quantity);
                 }
             });
         });

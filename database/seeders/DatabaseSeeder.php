@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use App\Models\kategori;
 use App\Models\Barang;
-
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -56,73 +56,87 @@ class DatabaseSeeder extends Seeder
 
         $items = [
             [
+                'id_barang' => Str::uuid()->toString(),
                 'nama_barang' => 'Aqua 19Liter',
                 'kode_barang' => 'AQ',
                 'harga' => 49_000,
             ],
             [
+                'id_barang' => Str::uuid()->toString(),
                 'nama_barang' => 'Aqua 1500ML (12)',
-                'kode_barang' => 'AQ1500',
+                'kode_barang' => 'AQ',
                 'harga' => 62_000,
             ],
             [
+                'id_barang' => Str::uuid()->toString(),
                 'nama_barang' => 'Aqua 600ML(24)',
-                'kode_barang' => 'AQ600',
+                'kode_barang' => 'AQ',
                 'harga' => 54_950,
             ],
             [
+                'id_barang' => Str::uuid()->toString(),
                 'nama_barang' => 'Aqua 330ML(24)',
-                'kode_barang' => 'AQ330',
+                'kode_barang' => 'AQ',
                 'harga' => 40_000,
             ],
             [
+                'id_barang' => Str::uuid()->toString(),
                 'nama_barang' => 'Aqua 220ML(48)',
-                'kode_barang' => 'AQ220',
+                'kode_barang' => 'AQ',
                 'harga' => 40_000,
             ],
             [
+                'id_barang' => Str::uuid()->toString(),
                 'nama_barang' => 'Mizone Cherry Blossom (12)',
-                'kode_barang' => 'MIZCHERRY',
+                'kode_barang' => 'MZ',
                 'harga' => 45_000,
             ],
             [
+                'id_barang' => Str::uuid()->toString(),
                 'nama_barang' => 'Mizone Cranberry (12)',
-                'kode_barang' => 'MIZCRAN',
+                'kode_barang' => 'MZ',
                 'harga' => 45_000,
             ],
             [
+                'id_barang' => Str::uuid()->toString(),
                 'nama_barang' => 'Mizone Lchyee Lemon (12)',
-                'kode_barang' => 'MIZLEMON',
+                'kode_barang' => 'MZ',
                 'harga' => 45_000,
             ],
             [
+                'id_barang' => Str::uuid()->toString(),
                 'nama_barang' => 'Mizone Starfruit (12)',
-                'kode_barang' => 'MIZSTAR',
+                'kode_barang' => 'MZ',
                 'harga' => 45_000,
             ],
             [
+                'id_barang' => Str::uuid()->toString(),
                 'nama_barang' => 'Vit 19Liter',
-                'kode_barang' => 'VIT19',
+                'kode_barang' => 'VT',
                 'harga' => 45_000,
             ],
             [
+                'id_barang' => Str::uuid()->toString(),
                 'nama_barang' => 'Vit 1500ML(12)',
-                'kode_barang' => 'VIT1500',
+                'kode_barang' => 'VI1',
                 'harga' => 44_000,
             ],
             [
+                'id_barang' => Str::uuid()->toString(),
                 'nama_barang' => 'Vit 600ML(24)',
-                'kode_barang' => 'VIT600',
+                'kode_barang' => 'VT',
                 'harga' => 43_000,
             ],
             [
+                'id_barang' => Str::uuid()->toString(),
                 'nama_barang' => 'Vit 330 ML(24)',
-                'kode_barang' => 'VIT330',
+                'kode_barang' => 'VT',
                 'harga' => 35_000,
             ],
             [
+                'id_barang' => Str::uuid()->toString(),
                 'nama_barang' => 'Vit 220ML(48)',
-                'kode_barang' => 'VIT220',
+                'kode_barang' => 'VT',
                 'harga' => 30_000,
             ],
         ];

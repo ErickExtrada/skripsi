@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Data;
 use App\Models\kategori;
-use App\Models\Barang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -35,8 +34,7 @@ class DataController extends Controller
     public function create()
     {
         $kategori = kategori::all();
-        $barang = barang::all();
-        return view('Fungsi.create', compact('kategori', 'barang'));
+        return view('Fungsi.create', compact('kategori'));
     }
 
     /**
