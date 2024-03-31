@@ -102,6 +102,30 @@
     {{-- ERROR --}}
     <script>
         $(document).ready(function() {
+            function calculatePrice() {
+                const namaBarang = $('#nama_barang').val();
+                const quantity = $('#quantity').val();
+                if (namaBarang && quantity) {
+                    $.ajax({
+                        url: '/price/' + namaBarang,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data) {
+                            const harga = data[0].harga;
+                            $('#harga').val(harga * quantity);
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            var errorMsg = 'Error loading products';
+                            if (jqXHR.responseJSON && jqXHR.responseJSON.error) {
+                                errorMsg += ': ' + jqXHR.responseJSON.error;
+                            }
+                            $('#nama_barang').empty().append('<option value="">' + errorMsg +
+                                '</option>');
+                            console.error("AJAX error: " + textStatus + ' : ' + errorThrown);
+                        }
+                    });
+                }
+            }
             $('#kategori').on('change', function() {
                 var kode_barang = $(this).val();
                 if (kode_barang) {
@@ -135,39 +159,11 @@
             });
 
             $('#nama_barang').on('change', function() {
-                const namaBarang = $(this).val();
-                const quantity = $('#quantity').val();
-                if (namaBarang) {
-                    $.ajax({
-                        url: '/price/' + namaBarang,
-                        type: 'GET',
-                        dataType: 'json',
-                        success: function(data) {
-                            const harga = data[0].harga;
-                            $('#harga').val(harga);
-                            if (harga !== undefined && quantity) {
-                                $('#harga').val(harga * quantity);
-                            }
-                        },
-                        error: function(jqXHR, textStatus, errorThrown) {
-                            var errorMsg = 'Error loading products';
-                            if (jqXHR.responseJSON && jqXHR.responseJSON.error) {
-                                errorMsg += ': ' + jqXHR.responseJSON.error;
-                            }
-                            $('#nama_barang').empty().append('<option value="">' + errorMsg +
-                                '</option>');
-                            console.error("AJAX error: " + textStatus + ' : ' + errorThrown);
-                        }
-                    });
-                }
+                calculatePrice();
             });
 
             $('#quantity').on('input', function() {
-                const quantity = $(this).val();
-                const harga = $('#harga').val();;
-                if (harga !== undefined && quantity) {
-                    $('#harga').val(harga * quantity);
-                }
+                calculatePrice();
             });
         });
     </script>
