@@ -16,17 +16,16 @@ class DataController extends Controller
      */
     public function index(Request $request)
     {
-        $katakunci = $request -> katakunci;
+        $katakunci = $request->katakunci;
         $jumlahbaris = 5;
-        if(strlen($katakunci)){
-            $data = Data::where('id','ike',"%$katakunci%")
-            ->orWhere('nama_barang','like', "%$katakunci%")
-            ->orWhere('kategori_barang','like',"%$katakunci%")
-            ->paginate($jumlahbaris);
-        }else{
-            $data = Data::all();
-            $data = Data::orderby('id', 'desc')->paginate($jumlahbaris);
+        if (strlen($katakunci)) {
+            $data = Data::where('id', 'ike', "%$katakunci%")
+                ->orWhere('nama_barang', 'like', "%$katakunci%")
+                ->orWhere('kategori_barang', 'like', "%$katakunci%")
+                ->paginate($jumlahbaris);
+            return view('Sidebar.inputbarang')->with('data', $data);
         }
+        $data = Data::orderby('id', 'desc')->paginate($jumlahbaris);
         return view('Sidebar.inputbarang')->with('data', $data);
     }
 
@@ -95,8 +94,8 @@ class DataController extends Controller
      */
     public function edit(string $id)
     {
-        $data = Data::where('id',$id)->first();
-        return view('fungsi.edit')->with('data',$data);
+        $data = Data::where('id', $id)->first();
+        return view('fungsi.edit')->with('data', $data);
     }
 
     /**
@@ -124,7 +123,7 @@ class DataController extends Controller
             'harga' => $request->harga,
             'date' => $request->date,
         ];
-        Data::where('id',$id)->update($data);
+        Data::where('id', $id)->update($data);
         return redirect()->to('pengelolainput')->with('success', 'Data berhasil di update');
     }
 
@@ -133,8 +132,7 @@ class DataController extends Controller
      */
     public function destroy(string $id)
     {
-        Data::where('id',$id)->delete();
+        Data::where('id', $id)->delete();
         return redirect()->to('pengelolainput')->with('success', 'Data berhasil di hapus');
     }
-
 }

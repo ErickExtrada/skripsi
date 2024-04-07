@@ -10,7 +10,6 @@ class Barang extends Model
 
     public function Barang()
     {
-        return $this->belongsTo(kategori::class, 'nama_barang', 'kode_barang', 'harga');
+        return $this->belongsTo(kategori::class, 'quantity', 'nama_barang', 'kode_barang', 'harga',  'keterangan');
     }
 }
-

@@ -99,7 +99,7 @@
                                 <a href='' class="btn btn-danger btn-sm">Delete</a>
                             </td>
                         </tr>
-                    @endforeach 
+                    @endforeach
                 </tbody>
             </table>
         </div>

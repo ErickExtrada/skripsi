@@ -36,7 +36,10 @@ Route::get('/home', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index']);
-    Route::get('/admin/pengelolagudang', [AdminController::class, 'pengelolagudang'])->middleware('aksesuser:pengelola_gudang');
+    Route::get(
+        '/admin/pengelolagudang',
+        [AdminController::class, 'pengelolagudang']
+    )->middleware('aksesuser:pengelola_gudang');
     Route::get('logout', [NewController::class, 'logout']);
 });
 //Create Data pada halaman pengelola gudang

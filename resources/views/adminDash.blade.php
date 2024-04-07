@@ -66,33 +66,43 @@
                 <thead>
                     <tr>
                         <th class="col-md-1">Id Barang</th>
-                        <th class="col-md-2">NamaBarang</th>
-                        <th class="col-md-2">KategoriBarang</th>
-                        <th class="col-md-3">Quantity</th>
-                        <th class="col-md-3">Keterangan</th>
-                        <th class="col-md-4">Harga</th>
-                        <th class="col-md-4">Date</th>
-                        <th class="col-md-4">Edit</th>
+                        <th class="col-md-1">Nama Barang</th>
+                        <th class="col-md-1">Kategori Barang</th>
+                        <th class="col-md-1">Quantity</th>
+                        <th class="col-md-1">Keterangan</th>
+                        <th class="col-md-1">Harga</th>
+                        <th class="col-md-1">Date</th>
+                        <th class="col-md-1">Edit</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Galon Aqua 5L</td>
-                        <td>Aqua</td>
-                        <td>100</td>
-                        <td>Stock dari gudang b</td>
-                        <td>Rp22.000</td>
-                        <td>1-1-2024</td>
-                        <td>
-                            <a href='' class="btn btn-warning btn-sm">Edit</a>
-                            <a href='' class="btn btn-danger btn-sm">Del</a>
-                        </td>
-                    </tr>
+                    <?php $i = $data->firstItem(); ?>
+                    @foreach ($data as $item)
+                        <tr>
+                            <td>{{ $i }}</td>
+                            <td>{{ $item->nama_barang }}</td>
+                            <td>{{ $item->kode_barang }}</td>
+                            <td>{{ $item->quantity }}</td>
+                            <td>{{ $item->keterangan }}</td>
+                            <td>Rp.{{ number_format($item->harga) }}</td>
+                            <td>{{ date('Y-m-d', strtotime($item->updated_at)) }}</td>
+                            <td>
+                                <a href='{{ url('pengelolainput/' . $item->id . '/edit') }}'
+                                    class="btn btn-warning btn-sm">Edit</a>
+                                <form onsubmit="return confirm('Delete data ini ?')" class='d-inline'
+                                    action="{{ url('pengelolainput/' . $item->id) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" name="submit" class="btn btn-danger btn-sm">Del</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <?php $i++; ?>
+                    @endforeach
                 </tbody>
             </table>
+            {{ $data->withQueryString()->links() }}
         </div>
-
     </div>
     </div>
     <script src={{ asset('js/jquery.min.js') }}></script>
