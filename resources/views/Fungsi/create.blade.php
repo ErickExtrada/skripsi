@@ -62,7 +62,7 @@
                 <div class="mb-3 row">
                     <label for="jurusan" class="col-sm-2 col-form-label">Harga</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name='harga'  value="{{ Session::get('harga') }}"
+                        <input type="text" class="form-control" name='harga' value="{{ Session::get('harga') }}"
                             id="harga" readonly>
                     </div>
                 </div>
@@ -143,7 +143,7 @@
                                 '<option value="">Select Product</option>');
                             $.each(data, function(i, Barang) {
                                 $('#nama_barang').append($('<option>', {
-                                    value: Barang.nama_barang,
+                                    value: Barang.id_barang,
                                     text: Barang.nama_barang,
                                 }));
                             });

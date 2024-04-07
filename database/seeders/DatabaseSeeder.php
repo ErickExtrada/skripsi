@@ -16,6 +16,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->dataUser();
+        $this->dataCategory();
+        $this->dataBarang();
+    }
+
+    private function dataUser(): void
+    {
         $userData = [
             [
                 'name' => 'Pengelola Gudang 1',
@@ -34,7 +41,10 @@ class DatabaseSeeder extends Seeder
         foreach ($userData as $key => $val) {
             User::create($val);
         }
+    }
 
+    private function dataCategory(): void
+    {
         $kategori = [
             [
                 'kategori_barang' => 'Aqua',
@@ -53,9 +63,13 @@ class DatabaseSeeder extends Seeder
         foreach ($kategori as $key => $val) {
             kategori::create($val);
         }
+    }
 
+    private function dataBarang(): void
+    {
         $items = [
             [
+                'id_barang' => uniqid(),
                 'nama_barang' => 'Aqua 19Liter',
                 'kode_barang' => 'AQ',
                 'quantity' => 10,
@@ -64,6 +78,7 @@ class DatabaseSeeder extends Seeder
                 'date' => new DateTime()
             ],
             [
+                'id_barang' => uniqid(),
                 'nama_barang' => 'Aqua 1500ML (12)',
                 'kode_barang' => 'AQ',
                 'quantity' => 50,
@@ -72,6 +87,7 @@ class DatabaseSeeder extends Seeder
                 'date' => new DateTime()
             ],
             [
+                'id_barang' => uniqid(),
                 'nama_barang' => 'Aqua 600ML(24)',
                 'kode_barang' => 'AQ',
                 'quantity' => 90,
@@ -80,6 +96,7 @@ class DatabaseSeeder extends Seeder
                 'date' => new DateTime()
             ],
             [
+                'id_barang' => uniqid(),
                 'nama_barang' => 'Aqua 330ML(24)',
                 'kode_barang' => 'AQ',
                 'quantity' => 150,
@@ -88,6 +105,7 @@ class DatabaseSeeder extends Seeder
                 'date' => new DateTime()
             ],
             [
+                'id_barang' => uniqid(),
                 'nama_barang' => 'Aqua 220ML(48)',
                 'kode_barang' => 'AQ',
                 'quantity' => 200,
@@ -96,6 +114,7 @@ class DatabaseSeeder extends Seeder
                 'date' => new DateTime()
             ],
             [
+                'id_barang' => uniqid(),
                 'nama_barang' => 'Mizone Cherry Blossom (12)',
                 'kode_barang' => 'MZ',
                 'quantity' => 400,
@@ -104,6 +123,7 @@ class DatabaseSeeder extends Seeder
                 'date' => new DateTime()
             ],
             [
+                'id_barang' => uniqid(),
                 'nama_barang' => 'Mizone Cranberry (12)',
                 'kode_barang' => 'MZ',
                 'quantity' => 300,
@@ -112,6 +132,7 @@ class DatabaseSeeder extends Seeder
                 'date' => new DateTime()
             ],
             [
+                'id_barang' => uniqid(),
                 'nama_barang' => 'Mizone Lchyee Lemon (12)',
                 'kode_barang' => 'MZ',
                 'quantity' => 20,
@@ -120,6 +141,7 @@ class DatabaseSeeder extends Seeder
                 'date' => new DateTime()
             ],
             [
+                'id_barang' => uniqid(),
                 'nama_barang' => 'Mizone Starfruit (12)',
                 'kode_barang' => 'MZ',
                 'quantity' => 8,
@@ -128,6 +150,7 @@ class DatabaseSeeder extends Seeder
                 'date' => new DateTime()
             ],
             [
+                'id_barang' => uniqid(),
                 'nama_barang' => 'Vit 19Liter',
                 'kode_barang' => 'VT',
                 'quantity' => 15,
@@ -136,6 +159,7 @@ class DatabaseSeeder extends Seeder
                 'date' => new DateTime()
             ],
             [
+                'id_barang' => uniqid(),
                 'nama_barang' => 'Vit 1500ML(12)',
                 'kode_barang' => 'VT',
                 'quantity' => 80,
@@ -144,6 +168,7 @@ class DatabaseSeeder extends Seeder
                 'date' => new DateTime()
             ],
             [
+                'id_barang' => uniqid(),
                 'nama_barang' => 'Vit 600ML(24)',
                 'kode_barang' => 'VT',
                 'quantity' => 100,
@@ -152,6 +177,7 @@ class DatabaseSeeder extends Seeder
                 'date' => new DateTime()
             ],
             [
+                'id_barang' => uniqid(),
                 'nama_barang' => 'Vit 330 ML(24)',
                 'kode_barang' => 'VT',
                 'quantity' => 10,
@@ -160,6 +186,7 @@ class DatabaseSeeder extends Seeder
                 'date' => new DateTime()
             ],
             [
+                'id_barang' => uniqid(),
                 'nama_barang' => 'Vit 220ML(48)',
                 'kode_barang' => 'VT',
                 'quantity' => 120,
@@ -168,7 +195,6 @@ class DatabaseSeeder extends Seeder
                 'date' => new DateTime()
             ],
         ];
-
 
         foreach ($items as $key => $val) {
             Barang::create($val);

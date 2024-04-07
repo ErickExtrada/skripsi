@@ -12,6 +12,7 @@ class Barang extends Model
 
     protected $table = 'barang';
     protected $fillable = [
+        'id_barang',
         'nama_barang',
         'kode_barang',
         'quantity',
@@ -26,6 +27,7 @@ class Barang extends Model
     {
         return $this->belongsTo(
             kategori::class,
+            'id_barang',
             'nama_barang',
             'kode_barang',
             'quantity',

@@ -10,6 +10,10 @@ class AdminController extends Controller
 {
     public function index(Request $request)
     {
+        if (Auth::user()->role == 'pengelola_gudang') {
+            return redirect()->to('/pengelola-gudang')->with('warning', 'Forbidden');
+        }
+
         $katakunci = $request->katakunci;
         $jumlahbaris = 5;
         if (strlen($katakunci)) {
@@ -23,7 +27,7 @@ class AdminController extends Controller
         return view('adminDash')->with('data', $data);
     }
 
-    public function pengelolagudang()
+    public function pengelolaGudang()
     {
         return view('dashboard');
     }

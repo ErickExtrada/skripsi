@@ -6,13 +6,14 @@ use Illuminate\Auth\Events\Login;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class NewController extends Controller
+class AuthController extends Controller
 {
-    function index()
+    public function index()
     {
         return view('login');
     }
-    function login(Request $request)
+
+    public function login(Request $request)
     {
         $request->validate([
             'email' => 'required',
@@ -30,19 +31,19 @@ class NewController extends Controller
         if (Auth::attempt($infologin)) {
             if (Auth::user()->role == 'administrator') {
                 return redirect('/admin');
-            } else if (Auth::user()->role == 'pengelola_gudang') {
-                return redirect('admin/pengelolagudang');
             }
-        } else {
-            return redirect('')->withErrors('Username dan Password tidak sesuai')->withInput();
+
+            if (Auth::user()->role == 'pengelola_gudang') {
+                return redirect('/pengelola-gudang');
+            }
         }
+
+        return redirect('')->withErrors('Username dan Password tidak sesuai')->withInput();
     }
-    function logout()
+
+    public function logout()
     {
         Auth::logout();
         return redirect('');
-    }
-    function create(){
-
     }
 }

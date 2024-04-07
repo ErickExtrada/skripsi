@@ -21,7 +21,7 @@
 @endif
 
 <!-- START FORM -->
-<form action='{{ url('pengelolainput/') . $data->id }}' method='post'> <!-- Error -->
+<form action='{{ url('pengelolainput/' . $data->id) . $data->id }}' method='post'> <!-- Error -->
     @csrf
     @method('PUT')
     <div class="my-3 p-3 bg-body rounded shadow-sm">

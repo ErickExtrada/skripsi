@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barang;
 use App\Models\Data;
 use App\Models\kategori;
 use Barryvdh\Debugbar\Facades\Debugbar;
@@ -69,8 +70,12 @@ class DataController extends Controller
         ]);
         $date = new DateTime($request->date);
         $hargaStr = $request->harga;
+        $idBarang = $request->nama_barang;
+        $dataBarang = Barang::where('id_barang', $idBarang)->first();
+        $calculateQuntity = $dataBarang->quantity - $request->quantity;
+        Barang::where('id_barang', $idBarang)->update(['quantity' => $calculateQuntity]);
         $data = [
-            'nama_barang' => $request->nama_barang,
+            'nama_barang' => $dataBarang->nama_barang,
             'kategori_barang' => $request->kategori_barang,
             'quantity' => $request->quantity,
             'keterangan' => $request->keterangan,

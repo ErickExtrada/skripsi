@@ -4,7 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\Dynamicdependent;
-use App\Http\Controllers\NewController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Pengiriman;
 use App\Http\Controllers\PengirimanController;
 use App\Http\Controllers\suratjalan;
@@ -25,8 +25,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['guest'])->group(function () {
-    Route::get('/', [NewController::class, 'index'])->name('login');
-    Route::post('/', [NewController::class, 'login']);
+    Route::get('/', [AuthController::class, 'index'])->name('login');
+    Route::post('/', [AuthController::class, 'login']);
 });
 Route::get('/home', function () {
     return redirect('/admin');
@@ -35,10 +35,10 @@ Route::get('/home', function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index']);
     Route::get(
-        '/admin/pengelolagudang',
-        [AdminController::class, 'pengelolagudang']
+        '/pengelola-gudang',
+        [AdminController::class, 'pengelolaGudang']
     )->middleware('aksesuser:pengelola_gudang');
-    Route::get('logout', [NewController::class, 'logout']);
+    Route::get('logout', [AuthController::class, 'logout']);
 });
 //Create Data pada halaman pengelola gudang
 Route::resource('/pengelolainput', DataController::class);
@@ -64,10 +64,9 @@ Route::get('/suratjalan', [suratjalanController::class, 'index']);
 // Route::get('/count-items/{kode}', [BarangController::class, 'countItemsByCategory']);
 // Route::get('/nama-barang/{kodeKategori}', [BarangController::class, 'getByKategori']);
 Route::get('/products/{kode_barang}', [BarangController::class, 'getProductsByCategory']);
-Route::get('/price/{nama_barang}', [BarangController::class, 'getPriceById']);
+Route::get('/price/{id_barang}', [BarangController::class, 'getPriceById']);
 
 // Route::get('/',[BarangController::class,'index']);
 // Route::get('/barang/{kode_barang}', 'BarangController@getBarangByKategori');
 
-
-Route::resource('/pengelolagudang', NewController::class);
+Route::resource('/pengelolagudang', AuthController::class);
