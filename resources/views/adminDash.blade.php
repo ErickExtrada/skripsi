@@ -35,9 +35,6 @@
                         <a href="{{ url('admintruck') }}">Truck</a>
                     </li>
                     <li>
-                        <a></a>
-                    </li>
-                    <li>
                         <a href="/logout">Log Out</a>
                     </li>
                 </ul>

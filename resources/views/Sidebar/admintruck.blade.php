@@ -21,7 +21,7 @@
                         alt=""></a>
                 <ul class="list-unstyled components mb-5">
                     <li class="active">
-                        <a href="" aria-expanded="false" class="">Daftar Barang</a>
+                        <a href="{{ url('admin-barang') }}" aria-expanded="false" class="">Daftar Barang</a>
                     </li>
                     <li>
                         <a href="index">Surat Jalan</a>
@@ -33,9 +33,6 @@
                     </li>
                     <li>
                         <a href="">Truck</a>
-                    </li>
-                    <li>
-                        <a href=""></a>
                     </li>
                     <li>
                         <a href="/logout">Log Out</a>
@@ -66,15 +63,15 @@
                 <thead>
                     <tr>
                         <th class="col-md-1">Id Truck</th>
-                        <th class="col-md-2">Jenis Truck</th>
-                        <th class="col-md-2">Nomor Polisi</th>
-                        <th class="col-md-3">Tahun Kendaraan</th>
-                        <th class="col-md-3">Operator</th>
-                        <th class="col-md-4">Action</th>
+                        <th class="col-md-1">Jenis Truck</th>
+                        <th class="col-md-1">Nomor Polisi</th>
+                        <th class="col-md-1">Tahun Kendaraan</th>
+                        <th class="col-md-1">Operator</th>
+                        <th class="col-md-1">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $i = $truck->firstItem() ?>
+                    <?php $i = $truck->firstItem(); ?>
                     @foreach ($truck as $item)
                         <tr>
                             <td>{{ $i }}</td>
@@ -93,7 +90,7 @@
                                 </form>
                             </td>
                         </tr>
-                        <?php $i++ ?>
+                        <?php $i++; ?>
                     @endforeach
                 </tbody>
             </table>

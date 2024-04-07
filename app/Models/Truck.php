@@ -10,6 +10,7 @@ class Truck extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id_truck',
         'jenis_truck',
         'nomor_polisi',
         'tahun_kendaraan',
