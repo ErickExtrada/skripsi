@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('pengiriman_id');
             $table->string('total_harga');
             $table->string('operator');
-            $table->status('status');
+            $table->string('status');
             $table->timestamps();
         });
     }

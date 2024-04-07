@@ -21,13 +21,13 @@
                         alt=""></a>
                 <ul class="list-unstyled components mb-5">
                     <li class="active">
-                        <a href="" aria-expanded="false" class="">Daftar Barang</a>
+                        <a href="{{ url('admin-pengiriman') }}" aria-expanded="false" class="">Daftar Barang</a>
                     </li>
                     <li>
                         <a href="{{ url('adminpengiriman') }}">Surat Jalan</a>
                     </li>
                     <li>
-                        <a href="{{ url('admin-pengiriman') }}">Pengiriman Barang</a>
+                        <a href="">Pengiriman Barang</a>
                         <ul class="collapse list-unstyled" id="pageSubmenu">
                         </ul>
                     </li>
@@ -57,18 +57,16 @@
                 </div>
             </nav>
             <div class="pb-3">
-                <a href='{{ url('admin-barang/create') }}' class="btn btn-primary">Input Data</a>
+                <a href='{{ url('admin-pengiriman/create') }}' class="btn btn-primary">Input Data</a>
             </div>
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th class="col-md-1">Id Barang</th>
-                        <th class="col-md-1">Nama Barang</th>
-                        <th class="col-md-1">Kategori Barang</th>
-                        <th class="col-md-1">Quantity</th>
-                        <th class="col-md-1">Keterangan</th>
-                        <th class="col-md-1">Harga</th>
+                        <th class="col-md-1">Id Pengiriman</th>
+                        <th class="col-md-1">Total Harga</th>
+                        <th class="col-md-1">Operator</th>
                         <th class="col-md-1">Date</th>
+                        <th class="col-md-1">Status</th>
                         <th class="col-md-1">Edit</th>
                     </tr>
                 </thead>
@@ -77,17 +75,17 @@
                     @foreach ($data as $item)
                         <tr>
                             <td>{{ $i }}</td>
-                            <td>{{ $item->nama_barang }}</td>
-                            <td>{{ $item->kode_barang }}</td>
-                            <td>{{ $item->quantity }}</td>
-                            <td>{{ $item->keterangan }}</td>
+                            <td>{{ $item->total_harga }}</td>
+                            <td>{{ $item->operator }}</td>
+                            <td>{{ $item->updated_at }}</td>
+                            <td>{{ $item->status }}</td>
                             <td>Rp.{{ number_format($item->harga) }}</td>
                             <td>{{ date('Y-m-d', strtotime($item->date)) }}</td>
                             <td>
-                                <a href='{{ url('admin-barang/' . $item->id . '/edit') }}'
+                                <a href='{{ url('admin-pengiriman/' . $item->id . '/edit') }}'
                                     class="btn btn-warning btn-sm">Edit</a>
                                 <form onsubmit="return confirm('Delete data ini ?')" class='d-inline'
-                                    action="{{ url('admin-barang/' . $item->id) }}" method="post">
+                                    action="{{ url('admin-pengiriman/' . $item->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" name="submit" class="btn btn-danger btn-sm">Del</button>

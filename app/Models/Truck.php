@@ -11,6 +11,7 @@ class Truck extends Model
 
     protected $fillable = [
         'id_truck',
+        'operator_id',
         'jenis_truck',
         'nomor_polisi',
         'tahun_kendaraan',

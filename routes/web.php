@@ -48,7 +48,7 @@ Route::get('/createData', [DataController::class, 'create']);
  * This admin
  */
 Route::resource('/admin-barang', BarangController::class);
-Route::resource('/adminpengiriman', PengirimanController::class);
+Route::resource('/admin-pengiriman', PengirimanController::class);
 
 //Create Truck data pada halaman admin
 Route::resource('/admintruck', TruckController::class);

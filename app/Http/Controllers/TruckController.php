@@ -57,7 +57,7 @@ class TruckController extends Controller
             'operator.required' => 'operator mohon di isi',
         ]);
         $truck = [
-            'id_truck' => uniqid(),
+            'operator_id' => uniqid(),
             'jenis_truck' => $request->jenistruck,
             'nomor_polisi' => $request->nomorpolisi,
             'tahun_kendaraan' => $request->tahunkendaraan,

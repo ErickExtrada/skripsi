@@ -10,9 +10,20 @@ class PengirimanController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('Sidebar.adminpengiriman');
+        $katakunci = $request->katakunci;
+        $jumlahbaris = 5;
+        if (strlen($katakunci)) {
+            $data = PengirimanBarang::where('id', 'ike', "%$katakunci%")
+                ->orWhere('pengiriman_id', 'like', "%$katakunci%")
+                ->orWhere('total_harga', 'like', "%$katakunci%")
+                ->orWhere('status', 'like', "%$katakunci%")
+                ->paginate($jumlahbaris);
+            return view('admin.pengiriman.list')->with('data', $data);;
+        }
+        $data = PengirimanBarang::orderby('id', 'desc')->paginate($jumlahbaris);
+        return view('admin.pengiriman.list')->with('data', $data);
     }
 
     /**
