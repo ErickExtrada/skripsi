@@ -60,7 +60,7 @@
                 </div>
             </nav>
             <div class="pb-3">
-                <a href='{{ url('/createData') }}' class="btn btn-primary">Input Data</a>
+                <a href='{{ url('admin/barang/create') }}' class="btn btn-primary">Input Data</a>
             </div>
             <table class="table table-striped">
                 <thead>
@@ -87,10 +87,10 @@
                             <td>Rp.{{ number_format($item->harga) }}</td>
                             <td>{{ date('Y-m-d', strtotime($item->updated_at)) }}</td>
                             <td>
-                                <a href='{{ url('pengelolainput/' . $item->id . '/edit') }}'
+                                <a href='{{ url('admin/barang/' . $item->id . '/edit') }}'
                                     class="btn btn-warning btn-sm">Edit</a>
                                 <form onsubmit="return confirm('Delete data ini ?')" class='d-inline'
-                                    action="{{ url('pengelolainput/' . $item->id) }}" method="post">
+                                    action="{{ url('barang/' . $item->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" name="submit" class="btn btn-danger btn-sm">Del</button>

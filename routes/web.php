@@ -10,8 +10,6 @@ use App\Http\Controllers\PengirimanController;
 use App\Http\Controllers\suratjalan;
 use App\Http\Controllers\suratjalanController;
 use App\Http\Controllers\TruckController;
-use GuzzleHttp\Promise\Create;
-use Illuminate\Auth\Events\Logout;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -46,6 +44,10 @@ Route::middleware(['auth'])->group(function () {
 Route::resource('/pengelolainput', DataController::class);
 Route::get('/createData', [DataController::class, 'create']);
 
+/**
+ * This admin
+ */
+Route::resource('/admin/barang', BarangController::class);
 Route::resource('/adminpengiriman', PengirimanController::class);
 
 //Create Truck data pada halaman admin
