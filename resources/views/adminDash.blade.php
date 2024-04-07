@@ -85,12 +85,12 @@
                             <td>{{ $item->quantity }}</td>
                             <td>{{ $item->keterangan }}</td>
                             <td>Rp.{{ number_format($item->harga) }}</td>
-                            <td>{{ date('Y-m-d', strtotime($item->updated_at)) }}</td>
+                            <td>{{ date('Y-m-d', strtotime($item->date)) }}</td>
                             <td>
                                 <a href='{{ url('admin/barang/' . $item->id . '/edit') }}'
                                     class="btn btn-warning btn-sm">Edit</a>
                                 <form onsubmit="return confirm('Delete data ini ?')" class='d-inline'
-                                    action="{{ url('barang/' . $item->id) }}" method="post">
+                                    action="{{ url('admin/barang/' . $item->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" name="submit" class="btn btn-danger btn-sm">Del</button>

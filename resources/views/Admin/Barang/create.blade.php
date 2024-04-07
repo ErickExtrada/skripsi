@@ -106,7 +106,7 @@
         }
         $(document).ready(function() {
             $('#kategori').on('change', function() {
-                var kode_barang = $(this).val();
+                const kode_barang = $(this).val();
                 if (kode_barang) {
                     $.ajax({
                         url: '/products/' + kode_barang,
@@ -136,6 +136,11 @@
                     $('#nama_barang').empty().append('<option value="">Select Category First</option>');
                 }
             });
+
+            $('#harga').on('change', function() {
+                const harga = $(this).val();
+                $('#harga').val(formatNumberWithComma(harga));
+            })
         });
     </script>
 

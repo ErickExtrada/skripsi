@@ -132,7 +132,7 @@
                 }
             }
             $('#kategori').on('change', function() {
-                var kode_barang = $(this).val();
+                const kode_barang = $(this).val();
                 if (kode_barang) {
                     $.ajax({
                         url: '/products/' + kode_barang,

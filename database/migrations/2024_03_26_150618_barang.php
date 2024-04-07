@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('quantity');
             $table->decimal('harga');
             $table->string('keterangan');
+            $table->date('date');
             $table->timestamps();
         });
     }

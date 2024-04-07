@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Session;
 
 class BarangController extends Controller
 {
+    private $pathRedirect = 'admin/barang';
+
     public function index(Request $request)
     {
         $katakunci = $request->katakunci;
@@ -32,6 +34,14 @@ class BarangController extends Controller
     {
         $kategori = kategori::all();
         return view('admin.barang.create', compact('kategori'));
+    }
+
+    private function formatPriceToNumber($hargaString)
+    {
+        $hargaStringWithoutCommas = str_replace(',', '', $hargaString);
+
+        // Convert the string to a numeric value
+        return (float) $hargaStringWithoutCommas;
     }
 
     /**
@@ -60,14 +70,14 @@ class BarangController extends Controller
         $hargaStr = $request->harga;
         $data = [
             'nama_barang' => $request->nama_barang,
-            'kategori_barang' => $request->kategori_barang,
+            'kode_barang' => $request->kategori_barang,
             'quantity' => $request->quantity,
             'keterangan' => $request->keterangan,
             'harga' =>  $this->formatPriceToNumber($hargaStr),
             'date' => $date,
         ];
         Barang::create($data);
-        return redirect()->to('pengelolainput')->with('success', 'Data berhasil di input');
+        return redirect()->to($this->pathRedirect)->with('success', 'Data berhasil di input');
     }
 
     /**
@@ -106,7 +116,7 @@ class BarangController extends Controller
             'date' => $request->date,
         ];
         Barang::where('id', $id)->update($data);
-        return redirect()->to('pengelolainput')->with('success', 'Data berhasil di update');
+        return redirect()->to($this->pathRedirect)->with('success', 'Data berhasil di update');
     }
 
     /**
@@ -115,7 +125,7 @@ class BarangController extends Controller
     public function destroy(string $id)
     {
         Barang::where('id', $id)->delete();
-        return redirect()->to('pengelolainput')->with('success', 'Data berhasil di hapus');
+        return redirect()->to($this->pathRedirect)->with('success', 'Data berhasil di hapus');
     }
 
 

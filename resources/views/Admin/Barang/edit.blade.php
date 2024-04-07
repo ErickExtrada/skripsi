@@ -66,7 +66,7 @@
                     <label for="jurusan" class="col-sm-2 col-form-label">Date</label>
                     <div class="col-sm-10">
                         <input type="date" class="form-control" name='date' id="date"
-                            value="{{ date('Y-m-d', strtotime($data->updated_at)) }}">
+                            value="{{ date('Y-m-d', strtotime($data->date)) }}">
                     </div>
                 </div>
                 <div class="mb-3 row">

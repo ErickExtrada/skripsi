@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use App\Models\kategori;
 use App\Models\Barang;
+use DateTime;
 use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
@@ -59,98 +60,112 @@ class DatabaseSeeder extends Seeder
                 'kode_barang' => 'AQ',
                 'quantity' => 10,
                 'harga' => 49_000,
-                'keterangan' => 'Stock Dari Gudang A'
+                'keterangan' => 'Stock Dari Gudang A',
+                'date' => new DateTime()
             ],
             [
                 'nama_barang' => 'Aqua 1500ML (12)',
                 'kode_barang' => 'AQ',
                 'quantity' => 50,
                 'harga' => 62_000,
-                'keterangan' => 'Stock Dari Gudang B'
+                'keterangan' => 'Stock Dari Gudang B',
+                'date' => new DateTime()
             ],
             [
                 'nama_barang' => 'Aqua 600ML(24)',
                 'kode_barang' => 'AQ',
                 'quantity' => 90,
                 'harga' => 54_950,
-                'keterangan' => 'Stock Dari Gudang D'
+                'keterangan' => 'Stock Dari Gudang D',
+                'date' => new DateTime()
             ],
             [
                 'nama_barang' => 'Aqua 330ML(24)',
                 'kode_barang' => 'AQ',
                 'quantity' => 150,
                 'harga' => 40_000,
-                'keterangan' => 'Stock Dari Gudang B'
+                'keterangan' => 'Stock Dari Gudang B',
+                'date' => new DateTime()
             ],
             [
                 'nama_barang' => 'Aqua 220ML(48)',
                 'kode_barang' => 'AQ',
                 'quantity' => 200,
                 'harga' => 40_000,
-                'keterangan' => 'Stock Dari Gudang F'
+                'keterangan' => 'Stock Dari Gudang F',
+                'date' => new DateTime()
             ],
             [
                 'nama_barang' => 'Mizone Cherry Blossom (12)',
                 'kode_barang' => 'MZ',
                 'quantity' => 400,
                 'harga' => 45_000,
-                'keterangan' => 'Stock Dari Gudang G'
+                'keterangan' => 'Stock Dari Gudang G',
+                'date' => new DateTime()
             ],
             [
                 'nama_barang' => 'Mizone Cranberry (12)',
                 'kode_barang' => 'MZ',
                 'quantity' => 300,
                 'harga' => 45_000,
-                'keterangan' => 'Stock Dari Gudang H'
+                'keterangan' => 'Stock Dari Gudang H',
+                'date' => new DateTime()
             ],
             [
                 'nama_barang' => 'Mizone Lchyee Lemon (12)',
                 'kode_barang' => 'MZ',
                 'quantity' => 20,
                 'harga' => 45_000,
-                'keterangan' => 'Stock Dari Gudang J'
+                'keterangan' => 'Stock Dari Gudang J',
+                'date' => new DateTime()
             ],
             [
                 'nama_barang' => 'Mizone Starfruit (12)',
                 'kode_barang' => 'MZ',
                 'quantity' => 8,
                 'harga' => 45_000,
-                'keterangan' => 'Stock Dari Gudang K'
+                'keterangan' => 'Stock Dari Gudang K',
+                'date' => new DateTime()
             ],
             [
                 'nama_barang' => 'Vit 19Liter',
                 'kode_barang' => 'VT',
                 'quantity' => 15,
                 'harga' => 45_000,
-                'keterangan' => 'Stock Dari Gudang L'
+                'keterangan' => 'Stock Dari Gudang L',
+                'date' => new DateTime()
             ],
             [
                 'nama_barang' => 'Vit 1500ML(12)',
                 'kode_barang' => 'VT',
                 'quantity' => 80,
                 'harga' => 44_000,
-                'keterangan' => 'Stock Dari Gudang M'
+                'keterangan' => 'Stock Dari Gudang M',
+                'date' => new DateTime()
             ],
             [
                 'nama_barang' => 'Vit 600ML(24)',
                 'kode_barang' => 'VT',
                 'quantity' => 100,
                 'harga' => 43_000,
-                'keterangan' => 'Stock Dari Gudang O'
+                'keterangan' => 'Stock Dari Gudang O',
+                'date' => new DateTime()
             ],
             [
                 'nama_barang' => 'Vit 330 ML(24)',
                 'kode_barang' => 'VT',
                 'quantity' => 10,
                 'harga' => 35_000,
-                'keterangan' => 'Stock Dari Gudang R'
+                'keterangan' => 'Stock Dari Gudang R',
+                'date' => new DateTime()
             ],
             [
                 'nama_barang' => 'Vit 220ML(48)',
                 'kode_barang' => 'VT',
                 'quantity' => 120,
                 'harga' => 30_000,
-                'keterangan' => 'Stock Dari Gudang X'
+                'keterangan' => 'Stock Dari Gudang X',
+                'date' => new DateTime()
             ],
         ];
 
