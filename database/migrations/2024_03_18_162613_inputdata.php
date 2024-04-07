@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_barang');
             $table->string('kategori_barang');
-            $table->decimal('quantity');
+            $table->integer('quantity');
             $table->text('keterangan');
             $table->decimal('harga');
             $table->date('date');
