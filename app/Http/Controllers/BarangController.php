@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Session;
 
 class BarangController extends Controller
 {
-    private $pathRedirect = 'admin/barang';
+    private $pathRedirect = 'admin-barang';
 
     public function index(Request $request)
     {
@@ -109,7 +109,7 @@ class BarangController extends Controller
         ]);
         $data = [
             'nama_barang' => $request->namabarang,
-            'kategori_barang' => $request->kategoribarang,
+            'kode_barang' => $request->kategoribarang,
             'quantity' => $request->quantity,
             'keterangan' => $request->keterangan,
             'harga' => $request->harga,
