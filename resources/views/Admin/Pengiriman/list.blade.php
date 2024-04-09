@@ -21,7 +21,7 @@
                         alt=""></a>
                 <ul class="list-unstyled components mb-5">
                     <li class="active">
-                        <a href="{{ url('admin-pengiriman') }}" aria-expanded="false" class="">Daftar Barang</a>
+                        <a href="{{ url('admin-barang') }}" aria-expanded="false" class="">Daftar Barang</a>
                     </li>
                     <li>
                         <a href="{{ url('adminpengiriman') }}">Surat Jalan</a>
@@ -64,7 +64,7 @@
                     <tr>
                         <th class="col-md-1">Id Pengiriman</th>
                         <th class="col-md-1">Total Harga</th>
-                        <th class="col-md-1">Operator</th>
+                        <th class="col-md-1">Id Operator</th>
                         <th class="col-md-1">Date</th>
                         <th class="col-md-1">Status</th>
                         <th class="col-md-1">Edit</th>
@@ -75,12 +75,10 @@
                     @foreach ($data as $item)
                         <tr>
                             <td>{{ $i }}</td>
-                            <td>{{ $item->total_harga }}</td>
-                            <td>{{ $item->operator }}</td>
-                            <td>{{ $item->updated_at }}</td>
-                            <td>{{ $item->status }}</td>
-                            <td>Rp.{{ number_format($item->harga) }}</td>
+                            <td>Rp. {{ number_format($item->total_harga) }}</td>
+                            <td>{{ $item->operator|$item }}</td>
                             <td>{{ date('Y-m-d', strtotime($item->date)) }}</td>
+                            <td>{{ $item->status }}</td>
                             <td>
                                 <a href='{{ url('admin-pengiriman/' . $item->id . '/edit') }}'
                                     class="btn btn-warning btn-sm">Edit</a>

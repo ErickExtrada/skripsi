@@ -22,7 +22,7 @@
 @endif
 
 <!-- START FORM -->
-<form action='{{ url('admin-barang/'.$data->id) }}' method='put'>
+<form action='{{ url('admin-barang/') }}' method='post'>
     @csrf
     <div class="my-3 p-3 bg-body rounded shadow-sm">
         <a href="{{ url('admin-barang') }}" class="btn btn-secondary">

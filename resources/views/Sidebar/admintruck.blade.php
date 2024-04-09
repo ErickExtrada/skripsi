@@ -27,7 +27,8 @@
                         <a href="index">Surat Jalan</a>
                     </li>
                     <li>
-                        <a href="" aria-expanded="false" class="">Pengiriman Barang</a>
+                        <a href="{{ url('admin-pengiriman') }}" aria-expanded="false" class="">Pengiriman
+                            Barang</a>
                         <ul class="collapse list-unstyled" id="pageSubmenu">
                         </ul>
                     </li>

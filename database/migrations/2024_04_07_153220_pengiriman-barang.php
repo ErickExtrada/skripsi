@@ -14,9 +14,12 @@ return new class extends Migration
         Schema::create('pengiriman-barang', function (Blueprint $table) {
             $table->id();
             $table->string('pengiriman_id');
+            $table->string('items');
             $table->string('total_harga');
+            // $table->string('quantity');
             $table->string('operator');
             $table->string('status');
+            $table->string('date');
             $table->timestamps();
         });
     }
