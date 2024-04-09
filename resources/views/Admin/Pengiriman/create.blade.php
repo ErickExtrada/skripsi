@@ -52,7 +52,12 @@
                 <div class="mb-3 row">
                     <label for="nama" class="col-sm-2 col-form-label">Status</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name='status' id="status">
+                        <select name="status" class="form-control input" id="status">
+                            <option value="">Select Status</option>
+                            @foreach ($listStatus as $status)
+                                <option value="{{ $status }}">{{ $status }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="mb-3 row">

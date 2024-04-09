@@ -36,7 +36,8 @@ class PengirimanController extends Controller
     {
         $trucks = Truck::all();
         $items = Data::all();
-        return view('admin.pengiriman.create', compact('trucks', 'items'));
+        $listStatus = ['Pending', 'Packing', 'On-Progress', 'Delivered', 'Canceled'];
+        return view('admin.pengiriman.create', compact('trucks', 'items', 'listStatus'));
     }
 
     private function formatPriceToNumber($hargaString)
@@ -99,9 +100,10 @@ class PengirimanController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(PengirimanBarang $pengirimanBarang)
+    public function edit(string $id)
     {
-        //
+        $data = PengirimanBarang::where('id', $id)->first();
+        return view('admin.pengiriman.edit')->with('data', $data);
     }
 
     /**

@@ -76,7 +76,7 @@
                         <tr>
                             <td>{{ $i }}</td>
                             <td>Rp. {{ number_format($item->total_harga) }}</td>
-                            <td>{{ $item->operator|$item }}</td>
+                            <td>{{ $item->operator }}</td>
                             <td>{{ date('Y-m-d', strtotime($item->date)) }}</td>
                             <td>{{ $item->status }}</td>
                             <td>
