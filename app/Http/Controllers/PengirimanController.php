@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Session;
 
 class PengirimanController extends Controller
 {
+    private $pathRedirect = 'admin-pengiriman';
     /**
      * Display a listing of the resource.
      */
@@ -86,7 +87,7 @@ class PengirimanController extends Controller
             'date' => $request->date,
         ];
         PengirimanBarang::create($data);
-        return redirect()->to('admin-pengiriman')->with('success', 'Data berhasil di input');
+        return redirect()->to($this->pathRedirect)->with('success', 'Data berhasil di input');
     }
 
     /**
@@ -103,15 +104,45 @@ class PengirimanController extends Controller
     public function edit(string $id)
     {
         $data = PengirimanBarang::where('id', $id)->first();
-        return view('admin.pengiriman.edit')->with('data', $data);
+        $truck = Truck::where('operator_id', $data->operator)->first();
+        $trucks = Truck::all();
+        $listStatus = ['Pending', 'Packing', 'On-Progress', 'Delivered', 'Canceled'];
+        return view('admin.pengiriman.edit', compact('data', 'listStatus', 'trucks', 'truck'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, PengirimanBarang $pengirimanBarang)
+    public function update(Request $request, string $id)
     {
-        //
+
+        $request->validate([
+            'items' => 'required',
+            'harga' => 'required',
+            // 'quantity' => 'required',
+            'kategori_operator' => 'required',
+            'status' => 'required',
+            'date' => 'required',
+        ], [
+            'items.required' => 'item barang pengiriman mohon di isi',
+            'harga.required' => 'total harga pengiriman mohon di isi',
+            // 'quantity.required' => 'quantity mohon di isi',
+            'kategori_operator.required' => 'operator mohon di isi',
+            'status.required' => 'status mohon di isi',
+            'date.required' => 'date mohon di isi',
+        ]);
+
+        $data = [
+            'pengiriman_id' => uniqid(),
+            'items' => $request->items,
+            'total_harga' => $this->formatPriceToNumber($request->harga),
+            // 'quantity' => 'Test 123',
+            'status' => $request->status,
+            'operator' => $request->kategori_operator,
+            'date' => $request->date,
+        ];
+        PengirimanBarang::where('id', $id)->update($data);
+        return redirect()->to($this->pathRedirect)->with('success', 'Data berhasil di update');
     }
 
     /**

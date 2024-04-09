@@ -138,7 +138,10 @@
             });
 
             $('#harga').on('change', function() {
-                const harga = $(this).val();
+                let harga = $(this).val();
+                if (typeof harga === 'string') {
+                    harga = parseInt(harga)
+                }
                 $('#harga').val(formatNumberWithComma(harga));
             })
         });

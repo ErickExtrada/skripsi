@@ -21,44 +21,45 @@
 @endif
 
 <!-- START FORM -->
-<form action='{{ url('admin-barang/' . $data->id) }}' method='post'> <!-- Error -->
+<form action='{{ url('admin-pengiriman/' . $data->id) }}' method='post'> <!-- Error -->
     @csrf
     @method('PUT')
     <div class="my-3 p-3 bg-body rounded shadow-sm">
-        <a href="{{ url('admin-barang') }}" class="btn btn-secondary">
+        <a href="{{ url('admin-pengiriman') }}" class="btn btn-secondary">
             << Back </a>
                 <div class="mb-3 row">
-                    <label for="nama" class="col-sm-2 col-form-label">Nama Barang</label>
+                    <label for="nama" class="col-sm-2 col-form-label">Items</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name='namabarang' value="{{ $data->nama_barang }}"
-                            id="nama_barang">
+                        <input type="text" class="form-control" name='items' value="{{ $data->items }}"
+                            id="items">
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="nama" class="col-sm-2 col-form-label">Kategori Barang</label>
+                    <label for="nama" class="col-sm-2 col-form-label">Kategori Operator</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name='kategoribarang'
-                            value="{{ $data->kode_barang }}" id="kategori_barang">
+                        <select name="kategori_operator" id="kategori" class="form-control input">
+                            <option value="{{ $data->operator }}">{{ $truck->operator }}</option>
+                            @foreach ($trucks as $truck)
+                                <option value="{{ $truck->operator_id }}">{{ $truck->operator }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="nim" class="col-sm-2 col-form-label">Quantity</label>
+                    <label for="nama" class="col-sm-2 col-form-label">Status</label>
                     <div class="col-sm-10">
-                        <input type="number" class="form-control" name='quantity' value="{{ $data->quantity }}"
-                            id="quantity">
+                        <select name="status" class="form-control input" id="status">
+                            <option value="{{ $data->status }}">{{ $data->status }}</option>
+                            @foreach ($listStatus as $status)
+                                <option value="{{ $status }}">{{ $status }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="nama" class="col-sm-2 col-form-label">Keterangan</label>
+                    <label for="jurusan" class="col-sm-2 col-form-label">Total Harga</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name='keterangan' id="keterangan"
-                            value="{{ $data->keterangan }}">
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="jurusan" class="col-sm-2 col-form-label">Harga</label>
-                    <div class="col-sm-10">
-                        <input type="number" class="form-control" name='harga' value="{{ $data->harga }}"
+                        <input type="text" class="form-control" name='harga' value="{{ $data->total_harga }}"
                             id="harga">
                     </div>
                 </div>
@@ -81,6 +82,7 @@
     <main class="container">
         @yield('content')
     </main>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
@@ -91,6 +93,18 @@
             date.setDate(date.getDate() - 1);
             var inputTanggalPemesanan = document.getElementById('date');
             inputTanggalPemesanan.setAttribute('min', today); // Set tanggal minimum adalah kemarin
+        })
+    </script>
+
+    <script>
+        function formatNumberWithComma(number) {
+            return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+        $(document).ready(function() {
+            $('#harga').on('change', function() {
+                const harga = $(this).val();
+                $('#harga').val(formatNumberWithComma(harga));
+            })
         });
     </script>
 </body>

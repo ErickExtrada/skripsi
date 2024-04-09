@@ -28,7 +28,7 @@
         <a href="{{ url('admin-pengiriman') }}" class="btn btn-secondary">
             << Back </a>
                 <div class='mb-3 row'>
-                    <label for="items" class='col-sm-2 col-form-label'>Select Items</label>
+                    <label for="items" class='col-sm-2 col-form-label'>Items</label>
                     <div class="col-sm-10">
                         <select name="items" class="form-control input" id="items">
                             <option value="">Select Item</option>
