@@ -5,21 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PengirimanBarang extends Model
+class SuratJalan extends Model
 {
     use HasFactory;
-    protected $table = 'pengiriman-barang';
-
     protected $fillable = [
-        'pengiriman_id',
-        'items',
-        'total_harga',
+        'id_surat_jalan',
+        'name',
+        'date',
         'pickup_address',
         'destination_address',
+        'nama_barang',
+        'kategori_barang',
         'operator',
-        'status',
-        'date',
+        'tracking',
         'updated_at',
         'created_at',
     ];
+    protected $table = 'surat-jalan';
 }

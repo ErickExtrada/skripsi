@@ -59,7 +59,7 @@ Route::get('/createTruck', [TruckController::class, 'create']);
 // Route::get('/createPengiriman',[Pengiriman::class, 'create']);
 
 //Surat Jalan pada halaman admin
-Route::get('/suratjalan', [suratjalanController::class, 'index']);
+Route::get('/surat-jalan', [SuratJalanController::class, 'index']);
 
 // Route::get('/count-items/{kode}', [BarangController::class, 'countItemsByCategory']);
 // Route::get('/nama-barang/{kodeKategori}', [BarangController::class, 'getByKategori']);

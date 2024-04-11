@@ -121,6 +121,8 @@ class PengirimanController extends Controller
             'harga' => 'required',
             // 'quantity' => 'required',
             'kategori_operator' => 'required',
+            'pickup_address' => 'required',
+            'destination_address' => 'required',
             'status' => 'required',
             'date' => 'required',
         ], [
@@ -128,6 +130,8 @@ class PengirimanController extends Controller
             'harga.required' => 'total harga pengiriman mohon di isi',
             // 'quantity.required' => 'quantity mohon di isi',
             'kategori_operator.required' => 'operator mohon di isi',
+            'pickup_address.required' => 'operator mohon di isi',
+            'destination_address.required' => 'operator mohon di isi',
             'status.required' => 'status mohon di isi',
             'date.required' => 'date mohon di isi',
         ]);
@@ -138,6 +142,8 @@ class PengirimanController extends Controller
             'total_harga' => $this->formatPriceToNumber($request->harga),
             // 'quantity' => 'Test 123',
             'status' => $request->status,
+            'pickup_address' => $request->pickup_address,
+            'destination_address' => $request->destination_address,
             'operator' => $request->kategori_operator,
             'date' => $request->date,
         ];

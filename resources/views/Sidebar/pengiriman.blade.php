@@ -38,7 +38,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="{{ url('') }}">Surat Jalan</a>
+                        <a href="{{ url('surat-jalan') }}">Surat Jalan</a>
                     </li>
                     <li>
                         <a href="{{ url('') }}">Pengiriman Barang</a>

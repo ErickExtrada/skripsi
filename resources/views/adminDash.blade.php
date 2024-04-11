@@ -24,7 +24,7 @@
                         <a href="" aria-expanded="false" class="">Daftar Barang</a>
                     </li>
                     <li>
-                        <a href="{{ url('adminpengiriman') }}">Surat Jalan</a>
+                        <a href="{{ url('surat-jalan') }}">Surat Jalan</a>
                     </li>
                     <li>
                         <a href="{{ url('admin-pengiriman') }}">Pengiriman Barang</a>
