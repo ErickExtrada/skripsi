@@ -154,8 +154,9 @@ class PengirimanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(PengirimanBarang $pengirimanBarang)
+    public function destroy(string $id)
     {
-        //
+        PengirimanBarang::where('id', $id)->delete();
+        return redirect()->to($this->pathRedirect)->with('success', 'Data berhasil di hapus');
     }
 }
