@@ -64,6 +64,20 @@
                     </div>
                 </div>
                 <div class="mb-3 row">
+                    <label for="jurusan" class="col-sm-2 col-form-label">Alamat Pickup</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name='pickup_address'
+                            value="{{ $data->pickup_address }}" id="pickup_address">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="jurusan" class="col-sm-2 col-form-label">Alamat Pengiriman</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name='destination_address'
+                            value="{{ $data->destination_address }}" id="destination_address">
+                    </div>
+                </div>
+                <div class="mb-3 row">
                     <label for="jurusan" class="col-sm-2 col-form-label">Date</label>
                     <div class="col-sm-10">
                         <input type="date" class="form-control" name='date' id="date"

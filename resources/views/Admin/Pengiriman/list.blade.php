@@ -65,6 +65,8 @@
                         <th class="col-md-1">Id Pengiriman</th>
                         <th class="col-md-1">Total Harga</th>
                         <th class="col-md-1">Id Operator</th>
+                        <th class="col-md-1">Alamat Pickup</th>
+                        <th class="col-md-1">Alamat Destinasi</th>
                         <th class="col-md-1">Date</th>
                         <th class="col-md-1">Status</th>
                         <th class="col-md-1">Edit</th>
@@ -77,6 +79,8 @@
                             <td>{{ $i }}</td>
                             <td>Rp. {{ number_format($item->total_harga) }}</td>
                             <td>{{ $item->operator }}</td>
+                            <td>{{ $item->pickup_address }}</td>
+                            <td>{{ $item->destination_address }}</td>
                             <td>{{ date('Y-m-d', strtotime($item->date)) }}</td>
                             <td>{{ $item->status }}</td>
                             <td>
