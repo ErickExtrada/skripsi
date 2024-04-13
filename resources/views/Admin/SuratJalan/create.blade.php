@@ -22,63 +22,28 @@
 @endif
 
 <!-- START FORM -->
-<form action='{{ url('admin-pengiriman/') }}' method='post'>
+<form action='{{ url('surat-jalan/') }}' method='post'>
     @csrf
     <div class="my-3 p-3 bg-body rounded shadow-sm">
-        <a href="{{ url('admin-pengiriman') }}" class="btn btn-secondary">
+        <a href="{{ url('surat-jalan') }}" class="btn btn-secondary">
             << Back </a>
+                <div class="mb-3 row">
+                    <label for="name_client" class='col-sm-2 col-form-label'>Nama Client</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name='name_client'
+                            value="{{ Session::get('name_client') }}" id="name_client">
+                    </div>
+                </div>
                 <div class='mb-3 row'>
-                    <label for="items" class='col-sm-2 col-form-label'>Items</label>
+                    <label for="tracking" class='col-sm-2 col-form-label'>Tracking Pengiriman</label>
                     <div class="col-sm-10">
-                        <select name="items" class="form-control input" id="items">
-                            <option value="">Select Item</option>
-                            @foreach ($items as $item)
-                                <option value="{{ $item->nama_barang }}">{{ $item->nama_barang }}</option>
+                        <select name="tracking" class="form-control input" id="tracking">
+                            <option value="">Select </option>
+                            @foreach ($pengirimanBarang as $tracking)
+                                <option value="{{ $tracking->pengiriman_id }}">
+                                    {{ $tracking->pengiriman_id . ' - ' . $tracking->items }}</option>
                             @endforeach
                         </select>
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="nama" class="col-sm-2 col-form-label">Kategori Operator</label>
-                    <div class="col-sm-10">
-                        <select name="kategori_operator" id="kategori" class="form-control input">
-                            <option value="">Select Operator</option>
-                            @foreach ($trucks as $truck)
-                                <option value="{{ $truck->operator_id }}">{{ $truck->operator }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="nama" class="col-sm-2 col-form-label">Status</label>
-                    <div class="col-sm-10">
-                        <select name="status" class="form-control input" id="status">
-                            <option value="">Select Status</option>
-                            @foreach ($listStatus as $status)
-                                <option value="{{ $status }}">{{ $status }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="jurusan" class="col-sm-2 col-form-label">Total Harga</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" name='harga' value="{{ Session::get('harga') }}"
-                            id="harga">
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="jurusan" class="col-sm-2 col-form-label">Alamat Pickup</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" name='pickup_address'
-                            value="{{ Session::get('pickup_address') }}" id="pickup_address">
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label for="jurusan" class="col-sm-2 col-form-label">Alamat Pengiriman</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" name='destination_address'
-                            value="{{ Session::get('destination_address') }}" id="destination_address">
                     </div>
                 </div>
                 <div class="mb-3 row">

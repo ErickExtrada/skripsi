@@ -75,6 +75,7 @@ class DataController extends Controller
         $calculateQuntity = $dataBarang->quantity - $request->quantity;
         Barang::where('id_barang', $idBarang)->update(['quantity' => $calculateQuntity]);
         $data = [
+            'id_data_transaksi' => uniqid(),
             'nama_barang' => $dataBarang->nama_barang,
             'kategori_barang' => $request->kategori_barang,
             'quantity' => $request->quantity,
@@ -121,6 +122,7 @@ class DataController extends Controller
             'harga.required' => 'harga mohon di isi',
         ]);
         $data = [
+            'id_data_transaksi' => uniqid(),
             'nama_barang' => $request->namabarang,
             'kategori_barang' => $request->kategoribarang,
             'quantity' => $request->quantity,

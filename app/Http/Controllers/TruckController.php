@@ -16,14 +16,14 @@ class TruckController extends Controller
         $katakunci = $request->katakunci;
         $jumlahbaris = 5;
         if (strlen($katakunci)) {
-            $truck = Truck::where('id_truck', 'like', "%$katakunci%")
+            $truck = Truck::where('id', 'like', "%$katakunci%")
                 ->orWhere('jenis_truck', 'like', "%$katakunci%")
                 ->orWhere('nomor_polisi', 'like', "%$katakunci%")
                 ->orWhere('tahun_kendaraan', 'like', "%$katakunci%")
                 ->paginate($jumlahbaris);
             return view('Sidebar.admintruck')->with('truck', $truck);
         }
-        $truck = Truck::orderby('id_truck', 'desc')->paginate($jumlahbaris);
+        $truck = Truck::orderby('id', 'desc')->paginate($jumlahbaris);
         return view('Sidebar.admintruck')->with('truck', $truck);
     }
 
@@ -57,7 +57,7 @@ class TruckController extends Controller
             'operator.required' => 'operator mohon di isi',
         ]);
         $truck = [
-            'operator_id' => uniqid(),
+            'id_operator' => uniqid(),
             'jenis_truck' => $request->jenistruck,
             'nomor_polisi' => $request->nomorpolisi,
             'tahun_kendaraan' => $request->tahunkendaraan,
@@ -80,7 +80,7 @@ class TruckController extends Controller
      */
     public function edit(Truck $truck)
     {
-        $truck = Truck::where('id_truck', $truck)->first();
+        $truck = Truck::where('id', $truck)->first();
         return view('fungsi.edit')->with('truck', $truck);
     }
 
@@ -106,7 +106,7 @@ class TruckController extends Controller
             'tahun_kendaraan' => $request->tahunkendaraan,
             'operator' => $request->operator,
         ];
-        Truck::where('id_truck', $truck)->update($truck);
+        Truck::where('id', $truck)->update($truck);
         return redirect()->to('admintruck')->with('success', 'Data berhasil di update');
     }
 
@@ -115,7 +115,7 @@ class TruckController extends Controller
      */
     public function destroy(string $truck)
     {
-        Truck::where('id_truck', $truck)->delete();
+        Truck::where('id', $truck)->delete();
         return redirect()->to('admintruck')->with('success', 'Data berhasil di hapus');
     }
 }

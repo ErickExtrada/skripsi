@@ -74,7 +74,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $i = $truck->firstItem() ?>
+                    <?php $i = $truck->firstItem(); ?>
                     @foreach ($truck as $item)
                         <tr>
                             <td>{{ $i }}</td>
@@ -83,17 +83,17 @@
                             <td>{{ $item->tahun_kendaraan }}</td>
                             <td>{{ $item->operator }}</td>
                             <td>
-                                <a href='{{ url('admintruck/' . $item->id_truck . '/edittruck') }}'
+                                <a href='{{ url('admintruck/' . $item->id . '/edittruck') }}'
                                     class="btn btn-warning btn-sm">Edit</a>
                                 <form onsubmit="return confirm('Delete data ini ?')" class='d-inline'
-                                    action="{{ url('admintruck/' . $item->id_truck) }}" method="post">
+                                    action="{{ url('admintruck/' . $item->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" name="submit" class="btn btn-danger btn-sm">Del</button>
                                 </form>
                             </td>
                         </tr>
-                        <?php $i++ ?>
+                        <?php $i++; ?>
                     @endforeach
                 </tbody>
             </table>

@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('inputdata', function (Blueprint $table) {
             $table->id();
+            $table->string('id_data_transaksi')->unique();
             $table->string('nama_barang');
             $table->string('kategori_barang');
             $table->integer('quantity');

@@ -20,7 +20,7 @@ class PengirimanController extends Controller
         $jumlahbaris = 5;
         if (strlen($katakunci)) {
             $data = PengirimanBarang::where('id', 'ike', "%$katakunci%")
-                ->orWhere('pengiriman_id', 'like', "%$katakunci%")
+                ->orWhere('id', 'like', "%$katakunci%")
                 ->orWhere('total_harga', 'like', "%$katakunci%")
                 ->orWhere('status', 'like', "%$katakunci%")
                 ->paginate($jumlahbaris);
@@ -37,7 +37,7 @@ class PengirimanController extends Controller
     {
         $trucks = Truck::all();
         $items = Data::all();
-        $listStatus = ['Pending', 'Packing', 'On-Progress', 'Delivered', 'Canceled'];
+        $listStatus = ['Pending', 'Packing', 'On-Progress Deliver', 'Delivered', 'Canceled'];
         return view('admin.pengiriman.create', compact('trucks', 'items', 'listStatus'));
     }
 
@@ -81,11 +81,13 @@ class PengirimanController extends Controller
             'date.required' => 'date mohon di isi',
         ]);
 
+        $dataTransaksi = Data::where('id_data_transaksi', $request->items)->first();
+
         $data = [
             'pengiriman_id' => uniqid(),
-            'items' => $request->items,
+            'id_data_transaksi' => $dataTransaksi->id_data_transaksi,
+            'items' => $dataTransaksi->nama_barang,
             'total_harga' => $this->formatPriceToNumber($request->harga),
-            // 'quantity' => 'Test 123',
             'status' => $request->status,
             'pickup_address' => $request->pickup_address,
             'destination_address' => $request->destination_address,
@@ -110,9 +112,9 @@ class PengirimanController extends Controller
     public function edit(string $id)
     {
         $data = PengirimanBarang::where('id', $id)->first();
-        $truck = Truck::where('operator_id', $data->operator)->first();
+        $truck = Truck::where('id_operator', $data->operator)->first();
         $trucks = Truck::all();
-        $listStatus = ['Pending', 'Packing', 'On-Progress', 'Delivered', 'Canceled'];
+        $listStatus = ['Pending', 'Packing', 'On-Progress Deliver', 'Delivered', 'Canceled'];
         return view('admin.pengiriman.edit', compact('data', 'listStatus', 'trucks', 'truck'));
     }
 

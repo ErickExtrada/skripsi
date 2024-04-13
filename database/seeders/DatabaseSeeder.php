@@ -45,6 +45,7 @@ class DatabaseSeeder extends Seeder
 
     private function dataCategory(): void
     {
+        $barangs = Barang::all();
         $kategori = [
             [
                 'kategori_barang' => 'Aqua',

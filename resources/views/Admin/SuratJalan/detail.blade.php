@@ -21,13 +21,20 @@
             margin-left: auto;
         }
 
-        table {
-            table-layout: fixed;
-            /* Fixed table layout ensures consistent column widths */
-            width: 100%;
-            /* Adjust if necessary */
-            margin-bottom: 1rem;
+        /* .container2 {
+            display: flex;
+            justify-content: space-between;
         }
+
+        .left, .right {
+            width: 48%; /* Adjust width as needed
+        }
+
+        table {
+        table-layout: fixed; /* Fixed table layout ensures consistent column widths */
+        /* width: 100%;
+        margin-bottom: 1rem;
+        } */
 
         th,
         td {
@@ -94,54 +101,61 @@
                 <table class="table table-light">
                     <tbody>
                         {{-- @foreach ($transactions as $transaction) --}}
-                        {{-- <tr>
-                            <td>No</td>
-                            <td>{{$transaction->id}}</td>
-                        </tr> --}}
                         <tr>
-                            <td>Surat Jalan</td>
-                            <td></td>
+                            <td>Kode Transaksi</td>
+                            <td>{{ $uniqueCode }}</td>
                         </tr>
                         <tr>
-                            <td>Alamat Pengiriman</td>
-                            <td></td>
+                            <td>Nama Pemesan</td>
+                            <td>{{ $transaction->name }}</td>
                         </tr>
                         <tr>
-                            <td>Daftar Barang:</td>
-                            <td></td>
+                            <td>Tanggal Pengambilan</td>
+                            <td>{{ $transaction->date }}</td>
+                        </tr>
+                        <tr>
+                            <td>Alamat Pengambilan</td>
+                            <td>{{ $transaction->pickup_address }}</td>
                         </tr>
                         <tr>
                             <td>Alamat Tujuan</td>
-                            <td></td>
+                            <td>{{ $transaction->destination_address }}</td>
                         </tr>
                         <tr>
                             <td>Barang</td>
-                            <td></td>
+                            <td>{{ $transaction->nama_barang }}</td>
                         </tr>
                         <tr>
                             <td>Jenis</td>
-                            <td></td>
+                            <td>{{ $transaction->jenis }}</td>
                         </tr>
                         <tr>
                             <td>Truk yang Digunakan</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>No Telpon</td>
-                            <td></td>
+                            <td>{{ $transaction->operator }}</td>
                         </tr>
                         <tr class="border-top">
                             <td><strong>Total</strong></td>
-                            <td><strong></strong></td>
+                            <td><strong>Rp {{ number_format($transaction->total, 0, ',', '.') }}</strong></td>
                         </tr>
                         {{-- @endforeach --}}
                     </tbody>
                 </table>
-                <div class="modal-footer">
-                    {{-- <a href="{{ url('admintransaksi') }}" class="btn btn-secondary"><< Back</a>
-                    <a href="{{ url('suratjalan/view/pdf') }}" class="btn btn-primary">Check</a>
-                    <a href="{{ url('suratjalan/downlaod/pdf') }}" class="btn btn-danger">Cetak</a> --}}
+                <div class="container">
+                    <div class="row justify-content-between">
+                        <div class="col text-start">
+                            <br><br>
+                            <h2>Yang Menerima</h2>
+                        </div>
+                        <div class="col text-end">
+                            <h2>Hormat Kami</h2>
+                        </div>
+                    </div>
                 </div>
+                {{-- <div class="modal-footer">
+                    <a href="{{ url('admintransaksi') }}" class="btn btn-secondary"><< Back</a>
+                    <a href="{{ url('suratjalan/view/pdf') }}" class="btn btn-primary">Check</a>
+                    <a href="{{ url('suratjalan/downlaod/pdf') }}" class="btn btn-danger">Cetak</a>
+                </div> --}}
             </div>
         </div>
     </div>

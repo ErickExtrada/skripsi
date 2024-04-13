@@ -10,14 +10,17 @@ class SuratJalan extends Model
     use HasFactory;
     protected $fillable = [
         'id_surat_jalan',
-        'name',
-        'date',
+        'name_client',
+        'nama_barang',
         'pickup_address',
         'destination_address',
-        'nama_barang',
         'kategori_barang',
         'operator',
         'tracking',
+        'harga_barang',
+        'harga_pengiriman',
+        'quantity',
+        'date',
         'updated_at',
         'created_at',
     ];
