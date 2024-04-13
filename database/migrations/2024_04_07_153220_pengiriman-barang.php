@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('pengiriman-barang', function (Blueprint $table) {
             $table->id();
-            $table->string('pengiriman_id');
+            $table->string('pengiriman_id')->unique();
+            $table->string('id_data_transaksi');
             $table->string('items');
             $table->string('total_harga');
             $table->string('pickup_address');
             $table->string('destination_address');
-            // $table->string('quantity');
             $table->string('operator');
             $table->string('status');
             $table->string('date');

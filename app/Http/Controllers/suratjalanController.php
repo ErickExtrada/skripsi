@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\SuratJalan;
 use Illuminate\Http\Request;
+use App\Models\Data;
+use App\Models\PengirimanBarang;
+use App\Models\Truck;
+use DateTime;
 
 class SuratJalanController extends Controller
 {
@@ -25,6 +29,86 @@ class SuratJalanController extends Controller
         return view('admin.suratjalan.list')->with('data', $data);
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        $pengirimanBarang = PengirimanBarang::whereIn('status', ['On-Progress Deliver', 'Delivered'])->get();
+        return view('admin.suratjalan.create', compact('pengirimanBarang'));
+    }
+
+
+    private function formatPriceToNumber($hargaString)
+    {
+        $hargaStringWithoutCommas = str_replace(',', '', $hargaString);
+
+        // Convert the string to a numeric value
+        return (float) $hargaStringWithoutCommas;
+    }
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name_client' => 'required',
+            'tracking' => 'required',
+            'date' => 'required',
+        ], [
+            'name_client.required' => 'nama client mohon di isi',
+            'tracking.required' => 'tracking pengiriman barang mohon di isi',
+            'date.required' => 'date mohon di isi',
+        ]);
+
+        $dataTracking = PengirimanBarang::where(
+            'pengiriman_id',
+            $request->tracking
+        )->first();
+        $dataTransaksi = Data::where(
+            'id_data_transaksi',
+            $dataTracking->id_data_transaksi
+        )->first();
+
+        $data = [
+            'id_surat_jalan' => uniqid(),
+            'name_client' => $request->name_client,
+            'nama_barang' => $dataTransaksi->nama_barang,
+            'pickup_address' => $dataTracking->pickup_address,
+            'destination_address' => $dataTracking->destination_address,
+            'kategori_barang' => $dataTransaksi->kategori_barang,
+            'operator' => $dataTracking->operator,
+            'tracking' => $dataTracking->status,
+            'harga_barang' => $this->formatPriceToNumber($dataTransaksi->harga),
+            'harga_pengiriman' => $this->formatPriceToNumber($dataTracking->total_harga),
+            'quantity' => $dataTransaksi->quantity,
+            'date' => $request->date,
+        ];
+        SuratJalan::create($data);
+        return redirect()->to($this->pathRedirect)->with('success', 'Data berhasil di input');
+    }
+
+    public function detailPdf($id)
+    {
+        $suratJalan = SuratJalan::where('id', $id)->firstOrFail();
+        $mpdf = new \Mpdf\Mpdf;
+
+        $uniqueCode = $suratJalan->id_surat_jalan;
+
+        // Render view to HTML, pass the unique code to the view
+        $html = view('admin.suratjalan.detail', compact('suratJalan', 'uniqueCode'))->render();
+
+        // Write HTML to PDF
+        $mpdf->WriteHTML($html);
+
+        // Construct the PDF filename
+        $pickupDateFormatted = (new DateTime($suratJalan->date))->format('Y-m-d');
+        $customerName = str_replace([' ', '/'], '_', $suratJalan->name_client);
+        $fileName = "Surat-Jalan-{$suratJalan->id_surat_jalan}-{$customerName}-{$pickupDateFormatted}.pdf";
+
+        // Output PDF with dynamic filename
+        $mpdf->Output($fileName, 'I');
+    }
     /**
      * Remove the specified resource from storage.
      */

@@ -12,15 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('surat-jalan', function (Blueprint $table) {
-            $table->id('id_surat_jalan');
-            $table->string('name');
-            $table->date('date');
+            $table->id();
+            $table->string('id_surat_jalan')->unique();
+            $table->string('name_client');
+            $table->string('nama_barang');
             $table->string('pickup_address');
             $table->string('destination_address');
-            $table->string('nama_barang');
             $table->string('kategori_barang');
             $table->string('operator');
             $table->string('tracking');
+            $table->string('harga_barang');
+            $table->string('harga_pengiriman');
+            $table->string('quantity');
+            $table->date('date');
             $table->timestamps();
         });
     }

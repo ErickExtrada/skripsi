@@ -33,7 +33,7 @@
                         <select name="items" class="form-control input" id="items">
                             <option value="">Select Item</option>
                             @foreach ($items as $item)
-                                <option value="{{ $item->nama_barang }}">{{ $item->nama_barang }}</option>
+                                <option value="{{ $item->id_data_transaksi }}">{{ $item->nama_barang }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -44,7 +44,7 @@
                         <select name="kategori_operator" id="kategori" class="form-control input">
                             <option value="">Select Operator</option>
                             @foreach ($trucks as $truck)
-                                <option value="{{ $truck->operator_id }}">{{ $truck->operator }}</option>
+                                <option value="{{ $truck->id_operator }}">{{ $truck->operator }}</option>
                             @endforeach
                         </select>
                     </div>

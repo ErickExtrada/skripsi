@@ -27,7 +27,7 @@
                         <a href="{{ url('surat-jalan') }}">Surat Jalan</a>
                     </li>
                     <li>
-                        <a href="">Pengiriman Barang</a>
+                        <a href="{{ url('admin-pengiriman') }}">Pengiriman Barang</a>
                         <ul class="collapse list-unstyled" id="pageSubmenu">
                         </ul>
                     </li>
@@ -65,6 +65,8 @@
                         <th class="col-md-1">Id Surat</th>
                         <th class="col-md-1">Nama</th>
                         <th class="col-md-1">Id Operator</th>
+                        <th class="col-md-1">Alamat Pickup</th>
+                        <th class="col-md-1">Alamat Destinasi</th>
                         <th class="col-md-1">Date</th>
                         <th class="col-md-1">Tracking</th>
                         <th class="col-md-1">Edit</th>
@@ -75,10 +77,12 @@
                     @foreach ($data as $item)
                         <tr>
                             <td>{{ $i }}</td>
-                            <td>Rp. {{ number_format($item->total_harga) }}</td>
+                            <td>{{ $item->name_client }}</td>
                             <td>{{ $item->operator }}</td>
+                            <td>{{ $item->pickup_address }}</td>
+                            <td>{{ $item->destination_address }}</td>
                             <td>{{ date('Y-m-d', strtotime($item->date)) }}</td>
-                            <td>{{ $item->status }}</td>
+                            <td>{{ $item->tracking }}</td>
                             <td>
                                 <a href='{{ url('surat-jalan/' . $item->id . '/edit') }}'
                                     class="btn btn-warning btn-sm">Edit</a>
@@ -88,6 +92,15 @@
                                     @method('DELETE')
                                     <button type="submit" name="submit" class="btn btn-danger btn-sm">Del</button>
                                 </form>
+                                <br>
+                                <button type="button" id="tombolSuratJalan" class="btn btn-primary"
+                                    data-bs-toggle="modal" data-bs-target="#modalAdminTransaksi">
+                                    <a href="{{ url('surat-jalan/detail/pdf', ['id' => $item->id]) }}"
+                                        style="color: white;" target="_blank">
+                                        <i class="fa fa-file-text" aria-hidden="true"></i>
+                                        Surat Jalan
+                                    </a>
+                                </button>
                             </td>
                         </tr>
                         <?php $i++; ?>

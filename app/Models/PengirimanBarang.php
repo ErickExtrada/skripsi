@@ -12,6 +12,7 @@ class PengirimanBarang extends Model
 
     protected $fillable = [
         'pengiriman_id',
+        'id_data_transaksi',
         'items',
         'total_harga',
         'pickup_address',

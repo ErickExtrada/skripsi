@@ -40,7 +40,7 @@
                         <select name="kategori_operator" id="kategori" class="form-control input">
                             <option value="{{ $data->operator }}">{{ $truck->operator }}</option>
                             @foreach ($trucks as $truck)
-                                <option value="{{ $truck->operator_id }}">{{ $truck->operator }}</option>
+                                <option value="{{ $truck->id_operator }}">{{ $truck->operator }}</option>
                             @endforeach
                         </select>
                     </div>

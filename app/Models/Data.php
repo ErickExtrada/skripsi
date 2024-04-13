@@ -10,6 +10,7 @@ class Data extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id_data_transaksi',
         'nama_barang',
         'kategori_barang',
         'quantity',
