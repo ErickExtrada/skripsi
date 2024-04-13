@@ -100,44 +100,51 @@
             <div class="container mt-5">
                 <table class="table table-light">
                     <tbody>
-                        {{-- @foreach ($transactions as $transaction) --}}
                         <tr>
                             <td>Kode Transaksi</td>
                             <td>{{ $uniqueCode }}</td>
                         </tr>
                         <tr>
                             <td>Nama Pemesan</td>
-                            <td>{{ $transaction->name }}</td>
+                            <td>{{ $suratJalan->name_client }}</td>
                         </tr>
                         <tr>
                             <td>Tanggal Pengambilan</td>
-                            <td>{{ $transaction->date }}</td>
+                            <td>{{ $suratJalan->date }}</td>
                         </tr>
                         <tr>
                             <td>Alamat Pengambilan</td>
-                            <td>{{ $transaction->pickup_address }}</td>
+                            <td>{{ $suratJalan->pickup_address }}</td>
                         </tr>
                         <tr>
                             <td>Alamat Tujuan</td>
-                            <td>{{ $transaction->destination_address }}</td>
+                            <td>{{ $suratJalan->destination_address }}</td>
                         </tr>
                         <tr>
                             <td>Barang</td>
-                            <td>{{ $transaction->nama_barang }}</td>
+                            <td>{{ $suratJalan->nama_barang }}</td>
                         </tr>
                         <tr>
-                            <td>Jenis</td>
-                            <td>{{ $transaction->jenis }}</td>
+                            <td>Kategori Barang</td>
+                            <td>{{ $suratJalan->kategori_barang }}</td>
                         </tr>
                         <tr>
                             <td>Truk yang Digunakan</td>
-                            <td>{{ $transaction->operator }}</td>
+                            <td>{{ $suratJalan->operator . ' - ' . $truck->operator }}</td>
                         </tr>
                         <tr class="border-top">
-                            <td><strong>Total</strong></td>
-                            <td><strong>Rp {{ number_format($transaction->total, 0, ',', '.') }}</strong></td>
+                            <td><strong>Harga Barang</strong></td>
+                            <td><strong>Rp {{ number_format($suratJalan->harga_barang, 0, ',', '.') }}</strong></td>
                         </tr>
-                        {{-- @endforeach --}}
+                        <tr class="border-top">
+                            <td><strong>Harga Pengiriman</strong></td>
+                            <td><strong>Rp {{ number_format($suratJalan->harga_pengiriman, 0, ',', '.') }}</strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Tanggal Pembuatan Surat</td>
+                            <td>{{ date('Y-m-d', strtotime($suratJalan->date)) }}</td>
+                        </tr>
                     </tbody>
                 </table>
                 <div class="container">
@@ -148,6 +155,8 @@
                         </div>
                         <div class="col text-end">
                             <h2>Hormat Kami</h2>
+                            <br>
+                            <h4>PT WINEX WAREHOUSE MANAGAMENT SYSTEM</h4>
                         </div>
                     </div>
                 </div>
