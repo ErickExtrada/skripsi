@@ -130,7 +130,7 @@
                         </tr>
                         <tr>
                             <td>Truk yang Digunakan</td>
-                            <td>{{ $suratJalan->operator }}</td>
+                            <td>{{ $suratJalan->operator . ' - ' . $truck->operator }}</td>
                         </tr>
                         <tr class="border-top">
                             <td><strong>Harga Barang</strong></td>

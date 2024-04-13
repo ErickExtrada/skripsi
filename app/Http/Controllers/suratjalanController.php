@@ -94,9 +94,13 @@ class SuratJalanController extends Controller
         $mpdf = new \Mpdf\Mpdf;
 
         $uniqueCode = $suratJalan->id_surat_jalan;
+        $truck = Truck::where(
+            'id_operator',
+            $suratJalan->operator
+        )->first();
 
         // Render view to HTML, pass the unique code to the view
-        $html = view('admin.suratjalan.detail', compact('suratJalan', 'uniqueCode'))->render();
+        $html = view('admin.suratjalan.detail', compact('suratJalan', 'uniqueCode', 'truck'))->render();
 
         // Write HTML to PDF
         $mpdf->WriteHTML($html);
