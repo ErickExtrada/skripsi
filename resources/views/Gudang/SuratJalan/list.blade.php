@@ -5,8 +5,7 @@
     <title>PT WINEX WAREHOUSE MANAGAMENT SYSTEM</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -27,17 +26,9 @@
                     <li>
                         <a href="{{ url('pengelolainput') }}">Input Barang</a>
                     </li>
-                    {{-- <li>
-                        <a href="{{ url('') }}" aria-expanded="false" class="">Barang Keluar</a>
-                        <ul class="collapse list-unstyled" id="pageSubmenu">
-                        </ul>
-                    </li> --}}
                     <li>
                         <a href="{{ url('surat-jalan') }}">Surat Jalan</a>
                     </li>
-                    {{-- <li>
-                        <a href="{{ url('') }}">Pengiriman Barang</a>
-                    </li> --}}
                     <li>
                         <a href="/logout">Log Out</a>
                     </li>
@@ -53,15 +44,6 @@
                         <i class="fa fa-bars"></i>
                         <span class="sr-only">Toggle Menu</span>
                     </button>
-                    <main class="container">
-                        @if (Session::has('success'))
-                            <div class="pt-3">
-                                <div class="alert alert-success">
-                                    {{ Session::get('success') }}
-                                </div>
-                            </div>
-                        @endif
-                    </main>
                     <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -70,24 +52,19 @@
                 </div>
             </nav>
             <div class="pb-3">
-                <a href='{{ url('/createData') }}' class="btn btn-primary">Input Data</a>
+                <a href='{{ url('surat-jalan/create') }}' class="btn btn-primary">Input Data</a>
             </div>
-            <form class="d-flex" action="{{ url('pengelolainput') }}" method="get">
-                <input class="form-control me-1" type="search" name="katakunci" value="{{ Request::get('katakunci') }}"
-                    placeholder="Masukkan kata kunci" aria-label="Search">
-                <button class="btn btn-secondary" type="submit">Cari</button>
-            </form>
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th class="col-md-1">Id Barang</th>
-                        <th class="col-md-1">Kategori Barang</th>
-                        <th class="col-md-1">Nama Barang</th>
-                        <th class="col-md-2">Quantity</th>
-                        <th class="col-md-2">Keterangan</th>
-                        <th class="col-md-1">Harga</th>
+                        <th class="col-md-1">Id Surat</th>
+                        <th class="col-md-1">Nama</th>
+                        <th class="col-md-1">Id Operator</th>
+                        <th class="col-md-1">Alamat Pickup</th>
+                        <th class="col-md-1">Alamat Destinasi</th>
                         <th class="col-md-1">Date</th>
-                        <th class="col-md-1">Action</th>
+                        <th class="col-md-1">Tracking</th>
+                        <th class="col-md-1">Edit</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -95,21 +72,21 @@
                     @foreach ($data as $item)
                         <tr>
                             <td>{{ $i }}</td>
-                            <td>{{ $item->kategori_barang }}</td>
-                            <td>{{ $item->nama_barang }}</td>
-                            <td>{{ $item->quantity }}</td>
-                            <td>{{ $item->keterangan }}</td>
-                            <td>Rp.{{ $item->harga }}</td>
-                            <td>{{ $item->date }}</td>
+                            <td>{{ $item->name_client }}</td>
+                            <td>{{ $item->operator }}</td>
+                            <td>{{ $item->pickup_address }}</td>
+                            <td>{{ $item->destination_address }}</td>
+                            <td>{{ date('Y-m-d', strtotime($item->date)) }}</td>
+                            <td>{{ $item->tracking }}</td>
                             <td>
-                                <a href='{{ url('pengelolainput/' . $item->id . '/edit') }}'
-                                    class="btn btn-warning btn-sm">Edit</a>
-                                <form onsubmit="return confirm('Delete data ini ?')" class='d-inline'
-                                    action="{{ url('pengelolainput/' . $item->id) }}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" name="submit" class="btn btn-danger btn-sm">Del</button>
-                                </form>
+                                <button type="button" id="tombolSuratJalan" class="btn btn-primary"
+                                    data-bs-toggle="modal" data-bs-target="#modalAdminTransaksi">
+                                    <a href="{{ url('surat-jalan/detail/pdf', ['id' => $item->id]) }}"
+                                        style="color: white;" target="_blank">
+                                        <i class="fa fa-file-text" aria-hidden="true"></i>
+                                        Surat Jalan
+                                    </a>
+                                </button>
                             </td>
                         </tr>
                         <?php $i++; ?>
@@ -118,16 +95,12 @@
             </table>
             {{ $data->withQueryString()->links() }}
         </div>
-
     </div>
     </div>
     <script src={{ asset('js/jquery.min.js') }}></script>
     <script src={{ asset('js/popper.js') }}></script>
     <script src={{ asset('js/bootstrap.min.js') }}"></script>
     <script src={{ asset('js/main.js') }}></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
 </body>
 
 </html>

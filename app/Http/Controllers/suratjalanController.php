@@ -8,6 +8,7 @@ use App\Models\Data;
 use App\Models\PengirimanBarang;
 use App\Models\Truck;
 use DateTime;
+use Illuminate\Support\Facades\Auth;
 
 class SuratJalanController extends Controller
 {
@@ -26,7 +27,11 @@ class SuratJalanController extends Controller
             return view('admin.pengiriman.list')->with('data', $data);
         }
         $data = SuratJalan::orderby('id', 'desc')->paginate($jumlahbaris);
-        return view('admin.suratjalan.list')->with('data', $data);
+        if (Auth::user()->role == 'administrator') {
+            return view('admin.suratjalan.list')->with('data', $data);
+        }
+
+        return view('gudang.suratjalan.list')->with('data', $data);
     }
 
     /**
@@ -86,6 +91,59 @@ class SuratJalanController extends Controller
         ];
         SuratJalan::create($data);
         return redirect()->to($this->pathRedirect)->with('success', 'Data berhasil di input');
+    }
+
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        $pengirimanBarang = PengirimanBarang::whereIn('status', ['On-Progress Deliver', 'Delivered'])->get();
+        $suratJalan = SuratJalan::where('id', $id)->first();
+        return view('admin.suratjalan.edit', compact('pengirimanBarang', 'suratJalan'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        $request->validate([
+            'name_client' => 'required',
+            'tracking' => 'required',
+            'date' => 'required',
+        ], [
+            'name_client.required' => 'nama client mohon di isi',
+            'tracking.required' => 'tracking pengiriman barang mohon di isi',
+            'date.required' => 'date mohon di isi',
+        ]);
+
+        $dataTracking = PengirimanBarang::where(
+            'pengiriman_id',
+            $request->tracking
+        )->first();
+        $dataTransaksi = Data::where(
+            'id_data_transaksi',
+            $dataTracking->id_data_transaksi
+        )->first();
+
+        $data = [
+            'id_surat_jalan' => uniqid(),
+            'name_client' => $request->name_client,
+            'nama_barang' => $dataTransaksi->nama_barang,
+            'pickup_address' => $dataTracking->pickup_address,
+            'destination_address' => $dataTracking->destination_address,
+            'kategori_barang' => $dataTransaksi->kategori_barang,
+            'operator' => $dataTracking->operator,
+            'tracking' => $dataTracking->status,
+            'harga_barang' => $this->formatPriceToNumber($dataTransaksi->harga),
+            'harga_pengiriman' => $this->formatPriceToNumber($dataTracking->total_harga),
+            'quantity' => $dataTransaksi->quantity,
+            'date' => $request->date,
+        ];
+        SuratJalan::where('id', $id)->update($data);
+        return redirect()->to($this->pathRedirect)->with('success', 'Data berhasil di update');
     }
 
     public function detailPdf($id)
