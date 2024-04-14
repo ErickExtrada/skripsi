@@ -8,6 +8,7 @@ use App\Models\Data;
 use App\Models\PengirimanBarang;
 use App\Models\Truck;
 use DateTime;
+use Illuminate\Support\Facades\Auth;
 
 class SuratJalanController extends Controller
 {
@@ -26,7 +27,11 @@ class SuratJalanController extends Controller
             return view('admin.pengiriman.list')->with('data', $data);
         }
         $data = SuratJalan::orderby('id', 'desc')->paginate($jumlahbaris);
-        return view('admin.suratjalan.list')->with('data', $data);
+        if (Auth::user()->role == 'administrator') {
+            return view('admin.suratjalan.list')->with('data', $data);
+        }
+
+        return view('gudang.suratjalan.list')->with('data', $data);
     }
 
     /**
