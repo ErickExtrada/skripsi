@@ -56,7 +56,6 @@ class PengirimanController extends Controller
     {
         Session::flash('items', $request->items);
         Session::flash('harga', $request->harga);
-        // Session::flash('quantity', $request->quantity);
         Session::flash('kategori_operator', $request->kategori_operator);
         Session::flash('status', $request->status);
         Session::flash('date', $request->date);
@@ -64,7 +63,6 @@ class PengirimanController extends Controller
         $request->validate([
             'items' => 'required',
             'harga' => 'required',
-            // 'quantity' => 'required',
             'pickup_address' => 'required',
             'destination_address' => 'required',
             'kategori_operator' => 'required',
@@ -73,10 +71,9 @@ class PengirimanController extends Controller
         ], [
             'items.required' => 'item barang pengiriman mohon di isi',
             'harga.required' => 'total harga pengiriman mohon di isi',
-            // 'quantity.required' => 'quantity mohon di isi',
-            'kategori_operator.required' => 'operator mohon di isi',
-            'pickup_address.required' => 'operator mohon di isi',
-            'kategori_operator.required' => 'operator mohon di isi',
+            'kategori_operator.required' => 'kategori operator mohon di isi',
+            'pickup_address.required' => 'alamat pickup mohon di isi',
+            'destination_address.required' => 'alamat pengiriman mohon di isi',
             'status.required' => 'status mohon di isi',
             'date.required' => 'date mohon di isi',
         ]);
@@ -127,7 +124,6 @@ class PengirimanController extends Controller
         $request->validate([
             'items' => 'required',
             'harga' => 'required',
-            // 'quantity' => 'required',
             'kategori_operator' => 'required',
             'pickup_address' => 'required',
             'destination_address' => 'required',
@@ -136,10 +132,9 @@ class PengirimanController extends Controller
         ], [
             'items.required' => 'item barang pengiriman mohon di isi',
             'harga.required' => 'total harga pengiriman mohon di isi',
-            // 'quantity.required' => 'quantity mohon di isi',
-            'kategori_operator.required' => 'operator mohon di isi',
-            'pickup_address.required' => 'operator mohon di isi',
-            'destination_address.required' => 'operator mohon di isi',
+            'kategori_operator.required' => 'kategori operator mohon di isi',
+            'pickup_address.required' => 'alamat pickup mohon di isi',
+            'destination_address.required' => 'alamat pengiriman mohon di isi',
             'status.required' => 'status mohon di isi',
             'date.required' => 'date mohon di isi',
         ]);
@@ -148,7 +143,6 @@ class PengirimanController extends Controller
             'pengiriman_id' => uniqid(),
             'items' => $request->items,
             'total_harga' => $this->formatPriceToNumber($request->harga),
-            // 'quantity' => 'Test 123',
             'status' => $request->status,
             'pickup_address' => $request->pickup_address,
             'destination_address' => $request->destination_address,
