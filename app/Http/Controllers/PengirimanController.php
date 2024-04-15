@@ -6,11 +6,12 @@ use App\Models\Data;
 use App\Models\PengirimanBarang;
 use App\Models\Truck;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class PengirimanController extends Controller
 {
-    private $pathRedirect = 'admin-pengiriman';
+    private $pathRedirect = 'pengiriman';
     /**
      * Display a listing of the resource.
      */
@@ -27,7 +28,10 @@ class PengirimanController extends Controller
             return view('admin.pengiriman.list')->with('data', $data);
         }
         $data = PengirimanBarang::orderby('id', 'desc')->paginate($jumlahbaris);
-        return view('admin.pengiriman.list')->with('data', $data);
+        if (Auth::user()->role == 'administrator') {
+            return view('admin.pengiriman.list')->with('data', $data);
+        }
+        return view('gudang.pengiriman.list')->with('data', $data);
     }
 
     /**
@@ -37,8 +41,7 @@ class PengirimanController extends Controller
     {
         $trucks = Truck::all();
         $items = Data::all();
-        $listStatus = ['Pending', 'Packing', 'On-Progress Deliver', 'Delivered', 'Canceled'];
-        return view('admin.pengiriman.create', compact('trucks', 'items', 'listStatus'));
+        return view('admin.pengiriman.create', compact('trucks', 'items'));
     }
 
     private function formatPriceToNumber($hargaString)
@@ -85,7 +88,7 @@ class PengirimanController extends Controller
             'id_data_transaksi' => $dataTransaksi->id_data_transaksi,
             'items' => $dataTransaksi->nama_barang,
             'total_harga' => $this->formatPriceToNumber($request->harga),
-            'status' => $request->status,
+            'status' => 'Pending',
             'pickup_address' => $request->pickup_address,
             'destination_address' => $request->destination_address,
             'operator' => $request->kategori_operator,
@@ -112,7 +115,10 @@ class PengirimanController extends Controller
         $truck = Truck::where('id_operator', $data->operator)->first();
         $trucks = Truck::all();
         $listStatus = ['Pending', 'Packing', 'On-Progress Deliver', 'Delivered', 'Canceled'];
-        return view('admin.pengiriman.edit', compact('data', 'listStatus', 'trucks', 'truck'));
+        if (Auth::user()->role == 'administrator') {
+            return view('admin.pengiriman.edit', compact('data', 'trucks', 'truck'));
+        }
+        return view('gudang.pengiriman.edit', compact('data', 'listStatus', 'trucks', 'truck'));
     }
 
     /**

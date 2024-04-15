@@ -21,13 +21,18 @@
                         alt=""></a>
                 <ul class="list-unstyled components mb-5">
                     <li class="active">
-                        <a href="{{ url('pengelola-gudang') }}" aria-expanded="false" class="">Home</a>
-                    </li>
-                    <li>
-                        <a href="{{ url('pengelolainput') }}">Transaksi</a>
+                        <a href="{{ url('admin-barang') }}" aria-expanded="false" class="">Daftar Barang</a>
                     </li>
                     <li>
                         <a href="{{ url('surat-jalan') }}">Surat Jalan</a>
+                    </li>
+                    <li>
+                        <a href="">Pengiriman Barang</a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu">
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="{{ url('admintruck') }}">Truck</a>
                     </li>
                     <li>
                         <a href="/logout">Log Out</a>
@@ -54,13 +59,12 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th class="col-md-1">Id Surat</th>
-                        <th class="col-md-1">Nama</th>
-                        <th class="col-md-1">Id Operator</th>
+                        <th class="col-md-1">Id</th>
+                        <th class="col-md-1">Id Transaksi</th>
                         <th class="col-md-1">Alamat Pickup</th>
                         <th class="col-md-1">Alamat Destinasi</th>
                         <th class="col-md-1">Date</th>
-                        <th class="col-md-1">Tracking</th>
+                        <th class="col-md-1">Status</th>
                         <th class="col-md-1">Edit</th>
                     </tr>
                 </thead>
@@ -69,21 +73,14 @@
                     @foreach ($data as $item)
                         <tr>
                             <td>{{ $i }}</td>
-                            <td>{{ $item->name_client }}</td>
-                            <td>{{ $item->operator }}</td>
+                            <td>{{ $item->id_data_transaksi }}</td>
                             <td>{{ $item->pickup_address }}</td>
                             <td>{{ $item->destination_address }}</td>
                             <td>{{ date('Y-m-d', strtotime($item->date)) }}</td>
-                            <td>{{ $item->tracking }}</td>
+                            <td>{{ $item->status }}</td>
                             <td>
-                                <button type="button" id="tombolSuratJalan" class="btn btn-primary"
-                                    data-bs-toggle="modal" data-bs-target="#modalAdminTransaksi">
-                                    <a href="{{ url('surat-jalan/detail/pdf', ['id' => $item->id]) }}"
-                                        style="color: white;" target="_blank">
-                                        <i class="fa fa-file-text" aria-hidden="true"></i>
-                                        Surat Jalan
-                                    </a>
-                                </button>
+                                <a href='{{ url('pengiriman/' . $item->id . '/edit') }}'
+                                    class="btn btn-warning btn-sm">Edit</a>
                             </td>
                         </tr>
                         <?php $i++; ?>

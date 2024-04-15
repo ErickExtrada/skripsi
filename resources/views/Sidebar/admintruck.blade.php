@@ -24,10 +24,10 @@
                         <a href="{{ url('admin-barang') }}" aria-expanded="false" class="">Daftar Barang</a>
                     </li>
                     <li>
-                        <a href="index">Surat Jalan</a>
+                        <a href="{{ url('surat-jalan') }}">Surat Jalan</a>
                     </li>
                     <li>
-                        <a href="{{ url('admin-pengiriman') }}" aria-expanded="false" class="">Pengiriman
+                        <a href="{{ url('pengiriman') }}" aria-expanded="false" class="">Pengiriman
                             Barang</a>
                         <ul class="collapse list-unstyled" id="pageSubmenu">
                         </ul>

@@ -21,11 +21,11 @@
 @endif
 
 <!-- START FORM -->
-<form action='{{ url('admin-pengiriman/' . $data->id) }}' method='post'> <!-- Error -->
+<form action='{{ url('pengiriman/' . $data->id) }}' method='post'> <!-- Error -->
     @csrf
     @method('PUT')
     <div class="my-3 p-3 bg-body rounded shadow-sm">
-        <a href="{{ url('admin-pengiriman') }}" class="btn btn-secondary">
+        <a href="{{ url('pengiriman') }}" class="btn btn-secondary">
             << Back </a>
                 <div class="mb-3 row">
                     <label for="nama" class="col-sm-2 col-form-label">Items</label>
@@ -45,7 +45,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="mb-3 row">
+                {{-- <div class="mb-3 row">
                     <label for="nama" class="col-sm-2 col-form-label">Status</label>
                     <div class="col-sm-10">
                         <select name="status" class="form-control input" id="status">
@@ -55,7 +55,7 @@
                             @endforeach
                         </select>
                     </div>
-                </div>
+                </div> --}}
                 <div class="mb-3 row">
                     <label for="jurusan" class="col-sm-2 col-form-label">Total Harga</label>
                     <div class="col-sm-10">

@@ -125,6 +125,10 @@
                             <td>{{ $suratJalan->nama_barang }}</td>
                         </tr>
                         <tr>
+                            <td>Quantity</td>
+                            <td>{{ $suratJalan->quantity }}</td>
+                        </tr>
+                        <tr>
                             <td>Kategori Barang</td>
                             <td>{{ $suratJalan->kategori_barang }}</td>
                         </tr>

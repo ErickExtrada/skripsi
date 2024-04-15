@@ -57,14 +57,13 @@
                 </div>
             </nav>
             <div class="pb-3">
-                <a href='{{ url('admin-pengiriman/create') }}' class="btn btn-primary">Input Data</a>
+                <a href='{{ url('pengiriman/create') }}' class="btn btn-primary">Input Data</a>
             </div>
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th class="col-md-1">Id Pengiriman</th>
-                        <th class="col-md-1">Total Harga</th>
-                        <th class="col-md-1">Id Operator</th>
+                        <th class="col-md-1">Id</th>
+                        <th class="col-md-1">Id Transaksi</th>
                         <th class="col-md-1">Alamat Pickup</th>
                         <th class="col-md-1">Alamat Destinasi</th>
                         <th class="col-md-1">Date</th>
@@ -77,17 +76,16 @@
                     @foreach ($data as $item)
                         <tr>
                             <td>{{ $i }}</td>
-                            <td>Rp. {{ number_format($item->total_harga) }}</td>
-                            <td>{{ $item->operator }}</td>
+                            <td>{{ $item->id_data_transaksi }}</td>
                             <td>{{ $item->pickup_address }}</td>
                             <td>{{ $item->destination_address }}</td>
                             <td>{{ date('Y-m-d', strtotime($item->date)) }}</td>
                             <td>{{ $item->status }}</td>
                             <td>
-                                <a href='{{ url('admin-pengiriman/' . $item->id . '/edit') }}'
+                                <a href='{{ url('pengiriman/' . $item->id . '/edit') }}'
                                     class="btn btn-warning btn-sm">Edit</a>
                                 <form onsubmit="return confirm('Delete data ini ?')" class='d-inline'
-                                    action="{{ url('admin-pengiriman/' . $item->id) }}" method="post">
+                                    action="{{ url('pengiriman/' . $item->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" name="submit" class="btn btn-danger btn-sm">Del</button>
