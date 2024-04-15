@@ -73,7 +73,7 @@ class DatabaseSeeder extends Seeder
                 'id_barang' => uniqid(),
                 'nama_barang' => 'Aqua 19Liter',
                 'kode_barang' => 'AQ',
-                'quantity' => 10,
+                'quantity' => 100,
                 'harga' => 49_000,
                 'keterangan' => 'Stock Dari Gudang A',
                 'date' => new DateTime()
@@ -82,7 +82,7 @@ class DatabaseSeeder extends Seeder
                 'id_barang' => uniqid(),
                 'nama_barang' => 'Aqua 1500ML (12)',
                 'kode_barang' => 'AQ',
-                'quantity' => 50,
+                'quantity' => 500,
                 'harga' => 62_000,
                 'keterangan' => 'Stock Dari Gudang B',
                 'date' => new DateTime()
@@ -91,7 +91,7 @@ class DatabaseSeeder extends Seeder
                 'id_barang' => uniqid(),
                 'nama_barang' => 'Aqua 600ML(24)',
                 'kode_barang' => 'AQ',
-                'quantity' => 90,
+                'quantity' => 900,
                 'harga' => 54_950,
                 'keterangan' => 'Stock Dari Gudang D',
                 'date' => new DateTime()
@@ -100,7 +100,7 @@ class DatabaseSeeder extends Seeder
                 'id_barang' => uniqid(),
                 'nama_barang' => 'Aqua 330ML(24)',
                 'kode_barang' => 'AQ',
-                'quantity' => 150,
+                'quantity' => 1500,
                 'harga' => 40_000,
                 'keterangan' => 'Stock Dari Gudang B',
                 'date' => new DateTime()
@@ -109,7 +109,7 @@ class DatabaseSeeder extends Seeder
                 'id_barang' => uniqid(),
                 'nama_barang' => 'Aqua 220ML(48)',
                 'kode_barang' => 'AQ',
-                'quantity' => 200,
+                'quantity' => 2000,
                 'harga' => 40_000,
                 'keterangan' => 'Stock Dari Gudang F',
                 'date' => new DateTime()
@@ -118,7 +118,7 @@ class DatabaseSeeder extends Seeder
                 'id_barang' => uniqid(),
                 'nama_barang' => 'Mizone Cherry Blossom (12)',
                 'kode_barang' => 'MZ',
-                'quantity' => 400,
+                'quantity' => 4000,
                 'harga' => 45_000,
                 'keterangan' => 'Stock Dari Gudang G',
                 'date' => new DateTime()
@@ -127,7 +127,7 @@ class DatabaseSeeder extends Seeder
                 'id_barang' => uniqid(),
                 'nama_barang' => 'Mizone Cranberry (12)',
                 'kode_barang' => 'MZ',
-                'quantity' => 300,
+                'quantity' => 3000,
                 'harga' => 45_000,
                 'keterangan' => 'Stock Dari Gudang H',
                 'date' => new DateTime()
@@ -136,7 +136,7 @@ class DatabaseSeeder extends Seeder
                 'id_barang' => uniqid(),
                 'nama_barang' => 'Mizone Lchyee Lemon (12)',
                 'kode_barang' => 'MZ',
-                'quantity' => 20,
+                'quantity' => 200,
                 'harga' => 45_000,
                 'keterangan' => 'Stock Dari Gudang J',
                 'date' => new DateTime()
@@ -145,7 +145,7 @@ class DatabaseSeeder extends Seeder
                 'id_barang' => uniqid(),
                 'nama_barang' => 'Mizone Starfruit (12)',
                 'kode_barang' => 'MZ',
-                'quantity' => 8,
+                'quantity' => 80,
                 'harga' => 45_000,
                 'keterangan' => 'Stock Dari Gudang K',
                 'date' => new DateTime()
@@ -154,7 +154,7 @@ class DatabaseSeeder extends Seeder
                 'id_barang' => uniqid(),
                 'nama_barang' => 'Vit 19Liter',
                 'kode_barang' => 'VT',
-                'quantity' => 15,
+                'quantity' => 150,
                 'harga' => 45_000,
                 'keterangan' => 'Stock Dari Gudang L',
                 'date' => new DateTime()
@@ -163,7 +163,7 @@ class DatabaseSeeder extends Seeder
                 'id_barang' => uniqid(),
                 'nama_barang' => 'Vit 1500ML(12)',
                 'kode_barang' => 'VT',
-                'quantity' => 80,
+                'quantity' => 800,
                 'harga' => 44_000,
                 'keterangan' => 'Stock Dari Gudang M',
                 'date' => new DateTime()
@@ -172,7 +172,7 @@ class DatabaseSeeder extends Seeder
                 'id_barang' => uniqid(),
                 'nama_barang' => 'Vit 600ML(24)',
                 'kode_barang' => 'VT',
-                'quantity' => 100,
+                'quantity' => 1000,
                 'harga' => 43_000,
                 'keterangan' => 'Stock Dari Gudang O',
                 'date' => new DateTime()
@@ -181,7 +181,7 @@ class DatabaseSeeder extends Seeder
                 'id_barang' => uniqid(),
                 'nama_barang' => 'Vit 330 ML(24)',
                 'kode_barang' => 'VT',
-                'quantity' => 10,
+                'quantity' => 100,
                 'harga' => 35_000,
                 'keterangan' => 'Stock Dari Gudang R',
                 'date' => new DateTime()
@@ -190,7 +190,7 @@ class DatabaseSeeder extends Seeder
                 'id_barang' => uniqid(),
                 'nama_barang' => 'Vit 220ML(48)',
                 'kode_barang' => 'VT',
-                'quantity' => 120,
+                'quantity' => 1200,
                 'harga' => 30_000,
                 'keterangan' => 'Stock Dari Gudang X',
                 'date' => new DateTime()
