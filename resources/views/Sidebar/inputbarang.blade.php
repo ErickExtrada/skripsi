@@ -105,7 +105,7 @@
                             <td>{{ $item->nama_barang }}</td>
                             <td>{{ $item->quantity }}</td>
                             <td>{{ $item->keterangan }}</td>
-                            <td>Rp.{{ $item->harga }}</td>
+                            <td>Rp.{{ number_format($item->harga, 0, ',', '.') }}</td>
                             <td>{{ $item->date }}</td>
                             <td>
                                 <a href='{{ url('pengelolainput/' . $item->id . '/edit') }}'
