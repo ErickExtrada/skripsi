@@ -69,6 +69,7 @@ class BarangController extends Controller
         $date = new DateTime($request->date);
         $hargaStr = $request->harga;
         $data = [
+            'id_barang' => uniqid(),
             'nama_barang' => $request->nama_barang,
             'kode_barang' => $request->kategori_barang,
             'quantity' => $request->quantity,
@@ -108,6 +109,7 @@ class BarangController extends Controller
             'harga.required' => 'harga mohon di isi',
         ]);
         $data = [
+            'id_barang' => uniqid(),
             'nama_barang' => $request->namabarang,
             'kode_barang' => $request->kategoribarang,
             'quantity' => $request->quantity,
