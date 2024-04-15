@@ -81,7 +81,7 @@
                             <td>{{ $item->tahun_kendaraan }}</td>
                             <td>{{ $item->operator }}</td>
                             <td>
-                                <a href='{{ url('admintruck/' . $item->id . '/edittruck') }}'
+                                <a href='{{ url('admintruck/' . $item->id . '/edit') }}'
                                     class="btn btn-warning btn-sm">Edit</a>
                                 <form onsubmit="return confirm('Delete data ini ?')" class='d-inline'
                                     action="{{ url('admintruck/' . $item->id) }}" method="post">

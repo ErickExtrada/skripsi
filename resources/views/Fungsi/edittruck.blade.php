@@ -27,39 +27,40 @@
     <div class="my-3 p-3 bg-body rounded shadow-sm">
         <a href="{{ url('admintruck') }}" class="btn btn-secondary">
             << Back </a>
-            <div class="mb-3 row">
-                <label for="nama" class="col-sm-2 col-form-label">Jenis Truck</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name='jenistruck' value="{{ Session::get('jenistruck') }}"
-                        id="jenis_truck">
+                <div class="mb-3 row">
+                    <label for="nama" class="col-sm-2 col-form-label">Jenis Truck</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name='jenistruck' value="{{ $truck->jenis_truck }}"
+                            id="jenis_truck">
+                    </div>
                 </div>
-            </div>
-            <div class="mb-3 row">
-                <label for="nama" class="col-sm-2 col-form-label">Nomor Polisi</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name='nomorpolisi'
-                        value="{{ Session::get('nomorpolisi') }}" id="nomor_polisi">
+                <div class="mb-3 row">
+                    <label for="nama" class="col-sm-2 col-form-label">Nomor Polisi</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name='nomorpolisi' value="{{ $truck->nomor_polisi }}"
+                            id="nomor_polisi">
+                    </div>
                 </div>
-            </div>
-            <div class="mb-3 row">
-                <label for="nama" class="col-sm-2 col-form-label">Tahun Kendaraan</label>
-                <div class="col-sm-10">
-                    <input type="number" class="form-control" name='tahunkendaraan' value="{{ Session::get('tahunkendaraan') }}" 
-                    id="tahun_kendaraan">
+                <div class="mb-3 row">
+                    <label for="nama" class="col-sm-2 col-form-label">Tahun Kendaraan</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" name='tahunkendaraan'
+                            value="{{ $truck->tahun_kendaraan }}" id="tahun_kendaraan">
+                    </div>
                 </div>
-            </div>
-            <div class="mb-3 row">
-                <label for="jurusan" class="col-sm-2 col-form-label">Operator</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name='operator' value="{{ Session::get('operator') }}"
-                        id="operator">
+                <div class="mb-3 row">
+                    <label for="jurusan" class="col-sm-2 col-form-label">Operator</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name='operator' value="{{ $truck->operator }}"
+                            id="operator">
+                    </div>
                 </div>
-            </div>
-            <div class="mb-3 row">
-                <label for="jurusan" class="col-sm-2 col-form-label"></label>
-                <div class="col-sm-10"><button type="submit" class="btn btn-primary" name="submit">SIMPAN</button></div>
-            </div>
-        </div>
+                <div class="mb-3 row">
+                    <label for="jurusan" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10"><button type="submit" class="btn btn-primary" name="submit">SIMPAN</button>
+                    </div>
+                </div>
+    </div>
     </div>
 </form>
 

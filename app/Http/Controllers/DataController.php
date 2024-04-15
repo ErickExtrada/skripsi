@@ -41,10 +41,14 @@ class DataController extends Controller
 
     private function formatPriceToNumber($hargaString)
     {
+        // Remove commas from the price string
         $hargaStringWithoutCommas = str_replace(',', '', $hargaString);
 
+        // Remove any non-numeric characters except for dots (for decimal numbers)
+        $cleanedPriceString = preg_replace('/[^0-9.]/', '', $hargaStringWithoutCommas);
+
         // Convert the string to a numeric value
-        return (float) $hargaStringWithoutCommas;
+        return (float) $cleanedPriceString;
     }
     /**
      * Store a newly created resource in storage.
@@ -72,7 +76,18 @@ class DataController extends Controller
         $hargaStr = $request->harga;
         $idBarang = $request->nama_barang;
         $dataBarang = Barang::where('id_barang', $idBarang)->first();
+        if ($dataBarang->quantity == 0) {
+            return redirect()->to('pengelolainput')->with('warning', 'Data barang sisa 0');
+        }
+
+        if ($request->quantity < 30) {
+            return redirect()->to('pengelolainput')->with('warning', 'Isi quantity  minimal 30');
+        }
+
         $calculateQuntity = $dataBarang->quantity - $request->quantity;
+        if ($calculateQuntity <= 0) {
+            return redirect()->to('pengelolainput')->with('warning', 'Data barang hanya sisa ' . $dataBarang->quantity);
+        }
         Barang::where('id_barang', $idBarang)->update(['quantity' => $calculateQuntity]);
         $data = [
             'id_data_transaksi' => uniqid(),

@@ -78,10 +78,10 @@ class TruckController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Truck $truck)
+    public function edit(string $id)
     {
-        $truck = Truck::where('id', $truck)->first();
-        return view('fungsi.edit')->with('truck', $truck);
+        $truck = Truck::where('id', $id)->first();
+        return view('fungsi.edittruck')->with('truck', $truck);
     }
 
     /**
