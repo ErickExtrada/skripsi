@@ -60,6 +60,12 @@
                                     {{ Session::get('success') }}
                                 </div>
                             </div>
+                        @elseif (Session::has('warning'))
+                            <div class="pt-3">
+                                <div class="alert alert-warning">
+                                    {{ Session::get('warning') }}
+                                </div>
+                            </div>
                         @endif
                     </main>
                     <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"

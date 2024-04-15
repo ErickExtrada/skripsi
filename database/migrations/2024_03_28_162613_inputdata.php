@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('kategori_barang');
             $table->integer('quantity');
             $table->text('keterangan');
-            $table->decimal('harga');
+            $table->decimal('harga', 10, 2);;
             $table->date('date');
             $table->date('updated_at');
             $table->date('created_at');
