@@ -22,10 +22,10 @@
 @endif
 
 <!-- START FORM -->
-<form action='{{ url('admin-barang/') }}' method='post'>
+<form action='{{ url('barang/') }}' method='post'>
     @csrf
     <div class="my-3 p-3 bg-body rounded shadow-sm">
-        <a href="{{ url('admin-barang') }}" class="btn btn-secondary">
+        <a href="{{ url('barang') }}" class="btn btn-secondary">
             << Back </a>
                 <div class="mb-3 row">
                     <label for="nama" class="col-sm-2 col-form-label">Kategori Barang</label>

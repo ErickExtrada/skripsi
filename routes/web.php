@@ -41,13 +41,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('logout', [AuthController::class, 'logout']);
 });
 //Create Data pada halaman pengelola gudang
-Route::resource('/pengelolainput', DataController::class);
+Route::resource('/transaksi', DataController::class);
 Route::get('/createData', [DataController::class, 'create']);
 
 /**
  * This admin
  */
-Route::resource('/admin-barang', BarangController::class);
+Route::resource('/barang', BarangController::class);
 Route::resource('/pengiriman', PengirimanController::class);
 
 //Create Truck data pada halaman admin

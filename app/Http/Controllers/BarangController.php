@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Session;
 
 class BarangController extends Controller
 {
-    private $pathRedirect = 'admin-barang';
+    private $pathRedirect = 'barang';
 
     public function index(Request $request)
     {

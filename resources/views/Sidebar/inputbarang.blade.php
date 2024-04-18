@@ -25,7 +25,7 @@
                         <a href="{{ url('pengelola-gudang') }}" aria-expanded="false" class="">Home</a>
                     </li>
                     <li>
-                        <a href="{{ url('pengelolainput') }}">Transaksi</a>
+                        <a href="{{ url('transaksi') }}">Transaksi</a>
                     </li>
                     {{-- <li>
                         <a href="{{ url('') }}" aria-expanded="false" class="">Barang Keluar</a>
@@ -78,7 +78,7 @@
             <div class="pb-3">
                 <a href='{{ url('/createData') }}' class="btn btn-primary">Input Data</a>
             </div>
-            <form class="d-flex" action="{{ url('pengelolainput') }}" method="get">
+            <form class="d-flex" action="{{ url('transaksi') }}" method="get">
                 <input class="form-control me-1" type="search" name="katakunci" value="{{ Request::get('katakunci') }}"
                     placeholder="Masukkan kata kunci" aria-label="Search">
                 <button class="btn btn-secondary" type="submit">Cari</button>
@@ -108,10 +108,10 @@
                             <td>Rp.{{ number_format($item->harga, 0, ',', '.') }}</td>
                             <td>{{ $item->date }}</td>
                             <td>
-                                <a href='{{ url('pengelolainput/' . $item->id . '/edit') }}'
+                                <a href='{{ url('transaksi/' . $item->id . '/edit') }}'
                                     class="btn btn-warning btn-sm">Edit</a>
                                 <form onsubmit="return confirm('Delete data ini ?')" class='d-inline'
-                                    action="{{ url('pengelolainput/' . $item->id) }}" method="post">
+                                    action="{{ url('transaksi/' . $item->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" name="submit" class="btn btn-danger btn-sm">Del</button>

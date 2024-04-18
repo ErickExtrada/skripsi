@@ -21,11 +21,11 @@
 @endif
 
 <!-- START FORM -->
-<form action='{{ url('pengelolainput/' . $data->id) . $data->id }}' method='post'> <!-- Error -->
+<form action='{{ url('transaksi/' . $data->id) . $data->id }}' method='post'> <!-- Error -->
     @csrf
     @method('PUT')
     <div class="my-3 p-3 bg-body rounded shadow-sm">
-        <a href="{{ url('pengelolainput') }}" class="btn btn-secondary">
+        <a href="{{ url('transaksi') }}" class="btn btn-secondary">
             << Back </a>
                 <div class="mb-3 row">
                     <label for="nama" class="col-sm-2 col-form-label">Nama Barang</label>

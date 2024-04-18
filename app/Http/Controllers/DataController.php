@@ -77,16 +77,16 @@ class DataController extends Controller
         $idBarang = $request->nama_barang;
         $dataBarang = Barang::where('id_barang', $idBarang)->first();
         if ($dataBarang->quantity == 0) {
-            return redirect()->to('pengelolainput')->with('warning', 'Data barang sisa 0');
+            return redirect()->to('transaksi')->with('warning', 'Data barang sisa 0');
         }
 
         if ($request->quantity < 30) {
-            return redirect()->to('pengelolainput')->with('warning', 'Isi quantity  minimal 30');
+            return redirect()->to('transaksi')->with('warning', 'Isi quantity  minimal 30');
         }
 
         $calculateQuntity = $dataBarang->quantity - $request->quantity;
         if ($calculateQuntity <= 0) {
-            return redirect()->to('pengelolainput')->with('warning', 'Data barang hanya sisa ' . $dataBarang->quantity);
+            return redirect()->to('transaksi')->with('warning', 'Data barang hanya sisa ' . $dataBarang->quantity);
         }
         Barang::where('id_barang', $idBarang)->update(['quantity' => $calculateQuntity]);
         $data = [
@@ -99,7 +99,7 @@ class DataController extends Controller
             'date' => $date,
         ];
         Data::create($data);
-        return redirect()->to('pengelolainput')->with('success', 'Data berhasil di input');
+        return redirect()->to('transaksi')->with('success', 'Data berhasil di input');
     }
 
     /**
@@ -146,7 +146,7 @@ class DataController extends Controller
             'date' => $request->date,
         ];
         Data::where('id', $id)->update($data);
-        return redirect()->to('pengelolainput')->with('success', 'Data berhasil di update');
+        return redirect()->to('transaksi')->with('success', 'Data berhasil di update');
     }
 
     /**
@@ -155,6 +155,6 @@ class DataController extends Controller
     public function destroy(string $id)
     {
         Data::where('id', $id)->delete();
-        return redirect()->to('pengelolainput')->with('success', 'Data berhasil di hapus');
+        return redirect()->to('transaksi')->with('success', 'Data berhasil di hapus');
     }
 }
