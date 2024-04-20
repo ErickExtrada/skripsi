@@ -27,9 +27,6 @@
                     <li>
                         <a href="{{ url('transaksi') }}">Transaksi</a>
                     </li>
-                    <li>
-                        <a href="{{ url('pengiriman') }}">Pengiriman Barang</a>
-                    </li>
                     {{-- <li>
                         <a href="" aria-expanded="false" class="">Barang Keluar</a>
                         <ul class="collapse list-unstyled" id="pageSubmenu">
