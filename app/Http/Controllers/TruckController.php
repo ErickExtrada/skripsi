@@ -21,10 +21,10 @@ class TruckController extends Controller
                 ->orWhere('nomor_polisi', 'like', "%$katakunci%")
                 ->orWhere('tahun_kendaraan', 'like', "%$katakunci%")
                 ->paginate($jumlahbaris);
-            return view('Sidebar.admintruck')->with('truck', $truck);
+            return view('admin.truck.list')->with('truck', $truck);
         }
         $truck = Truck::orderby('id', 'desc')->paginate($jumlahbaris);
-        return view('Sidebar.admintruck')->with('truck', $truck);
+        return view('admin.truck.list')->with('truck', $truck);
     }
 
     /**
@@ -32,7 +32,7 @@ class TruckController extends Controller
      */
     public function create()
     {
-        return view('Fungsi.createtruck');
+        return view('admin.truck.create');
     }
 
     /**
@@ -81,7 +81,7 @@ class TruckController extends Controller
     public function edit(string $id)
     {
         $truck = Truck::where('id', $id)->first();
-        return view('fungsi.edittruck')->with('truck', $truck);
+        return view('admin.truck.edit')->with('truck', $truck);
     }
 
     /**

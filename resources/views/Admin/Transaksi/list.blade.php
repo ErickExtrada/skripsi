@@ -22,22 +22,19 @@
                         alt=""></a>
                 <ul class="list-unstyled components mb-5">
                     <li class="active">
-                        <a href="{{ url('pengelola-gudang') }}" aria-expanded="false" class="">Home</a>
+                        <a href="{{ url('transaksi') }}" aria-expanded="false" class="">Transaksi</a>
                     </li>
-                    <li>
-                        <a href="{{ url('transaksi') }}">Transaksi</a>
-                    </li>
-                    {{-- <li>
-                        <a href="{{ url('') }}" aria-expanded="false" class="">Barang Keluar</a>
-                        <ul class="collapse list-unstyled" id="pageSubmenu">
-                        </ul>
-                    </li> --}}
                     <li>
                         <a href="{{ url('surat-jalan') }}">Surat Jalan</a>
                     </li>
-                    {{-- <li>
-                        <a href="{{ url('') }}">Pengiriman Barang</a>
-                    </li> --}}
+                    <li>
+                        <a href="{{ url('pengiriman') }}">Pengiriman Barang</a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu">
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="{{ url('admintruck') }}">Truck</a>
+                    </li>
                     <li>
                         <a href="/logout">Log Out</a>
                     </li>
@@ -79,8 +76,8 @@
                 <a href='{{ url('/createData') }}' class="btn btn-primary">Input Data</a>
             </div>
             <form class="d-flex" action="{{ url('transaksi') }}" method="get">
-                <input class="form-control me-1" type="search" name="katakunci" value="{{ Request::get('katakunci') }}"
-                    placeholder="Masukkan kata kunci" aria-label="Search">
+                <input class="form-control me-1" type="search" name="katakunci"
+                    value="{{ Request::get('katakunci') }}" placeholder="Masukkan kata kunci" aria-label="Search">
                 <button class="btn btn-secondary" type="submit">Cari</button>
             </form>
             <table class="table table-striped">

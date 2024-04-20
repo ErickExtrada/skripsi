@@ -24,7 +24,7 @@
                         <a href="{{ url('pengelola-gudang') }}" aria-expanded="false" class="">Home</a>
                     </li>
                     <li>
-                        <a href="{{ url('transaksi') }}">Transaksi</a>
+                        <a href="{{ url('barang') }}">Surat Jalan</a>
                     </li>
                     <li>
                         <a href="{{ url('surat-jalan') }}">Surat Jalan</a>

@@ -12,7 +12,6 @@
     <link rel="stylesheet" href={{ asset('css/style.css') }}>
 </head>
 
-
 <body>
 
     <div class="wrapper d-flex align-items-stretch">
@@ -22,22 +21,20 @@
                         alt=""></a>
                 <ul class="list-unstyled components mb-5">
                     <li class="active">
-                        <a href="{{ url('pengelola-gudang') }}" aria-expanded="false" class="">Home</a>
+                        <a href="{{ url('transaksi') }}" aria-expanded="false" class="">Transaksi</a>
                     </li>
-                    <li>
-                        <a href="{{ url('transaksi') }}">Transaksi</a>
-                    </li>
-                    {{-- <li>
-                        <a href="" aria-expanded="false" class="">Barang Keluar</a>
-                        <ul class="collapse list-unstyled" id="pageSubmenu">
-                        </ul>
-                    </li> --}}
                     <li>
                         <a href="{{ url('surat-jalan') }}">Surat Jalan</a>
                     </li>
-                    {{-- <li>
-                        <a href="{{url}}">Pengiriman Barang</a>
-                    </li> --}}
+                    <li>
+                        <a href="{{ url('pengiriman') }}" aria-expanded="false" class="">Pengiriman
+                            Barang</a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu">
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">Truck</a>
+                    </li>
                     <li>
                         <a href="/logout">Log Out</a>
                     </li>
@@ -58,23 +55,47 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fa fa-bars"></i>
                     </button>
-
-                    <body class="bg-light">
-                        <main class="container">
-                            @if (Session::has('success'))
-                                <div class="pt-3">
-                                    <div class="alert alert-success">
-                                        {{ Session::get('success') }}
-                                    </div>
-                                </div>
-                            @endif
-                        </main>
-                    </body>
                 </div>
             </nav>
-            </tbody>
+            <div class="pb-3">
+                <a href='{{ url('/createTruck') }}' class="btn btn-primary">Input Truck</a>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="col-md-1">Id Truck</th>
+                        <th class="col-md-1">Jenis Truck</th>
+                        <th class="col-md-1">Nomor Polisi</th>
+                        <th class="col-md-1">Tahun Kendaraan</th>
+                        <th class="col-md-1">Operator</th>
+                        <th class="col-md-1">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $i = $truck->firstItem(); ?>
+                    @foreach ($truck as $item)
+                        <tr>
+                            <td>{{ $i }}</td>
+                            <td>{{ $item->jenis_truck }}</td>
+                            <td>{{ $item->nomor_polisi }}</td>
+                            <td>{{ $item->tahun_kendaraan }}</td>
+                            <td>{{ $item->operator }}</td>
+                            <td>
+                                <a href='{{ url('admintruck/' . $item->id . '/edit') }}'
+                                    class="btn btn-warning btn-sm">Edit</a>
+                                <form onsubmit="return confirm('Delete data ini ?')" class='d-inline'
+                                    action="{{ url('admintruck/' . $item->id) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" name="submit" class="btn btn-danger btn-sm">Del</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <?php $i++; ?>
+                    @endforeach
+                </tbody>
             </table>
-        </div> --}}
+        </div>
 
     </div>
     </div>

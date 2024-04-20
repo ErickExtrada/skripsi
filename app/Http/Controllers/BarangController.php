@@ -21,10 +21,10 @@ class BarangController extends Controller
                 ->orWhere('nama_barang', 'like', "%$katakunci%")
                 ->orWhere('kategori_barang', 'like', "%$katakunci%")
                 ->paginate($jumlahbaris);
-            return view('adminDash')->with('data', $data);
+            return view('gudang.barang.list')->with('data', $data);
         }
         $data = Barang::orderby('id', 'desc')->paginate($jumlahbaris);
-        return view('adminDash')->with('data', $data);
+        return view('gudang.barang.list')->with('data', $data);
     }
 
     /**
@@ -33,7 +33,7 @@ class BarangController extends Controller
     public function create()
     {
         $kategori = kategori::all();
-        return view('admin.barang.create', compact('kategori'));
+        return view('gudang.barang.create', compact('kategori'));
     }
 
     private function formatPriceToNumber($hargaString)
@@ -87,7 +87,7 @@ class BarangController extends Controller
     public function edit(string $id)
     {
         $data = Barang::where('id', $id)->first();
-        return view('admin.barang.edit')->with('data', $data);
+        return view('gudang.barang.edit')->with('data', $data);
     }
 
 

@@ -21,7 +21,7 @@
                         alt=""></a>
                 <ul class="list-unstyled components mb-5">
                     <li class="active">
-                        <a href="{{ url('barang') }}" aria-expanded="false" class="">Daftar Barang</a>
+                        <a href="{{ url('transaksi') }}" aria-expanded="false" class="">Transaksi</a>
                     </li>
                     <li>
                         <a href="{{ url('surat-jalan') }}">Surat Jalan</a>

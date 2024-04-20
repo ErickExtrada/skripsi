@@ -24,10 +24,10 @@ class DataController extends Controller
                 ->orWhere('nama_barang', 'like', "%$katakunci%")
                 ->orWhere('kategori_barang', 'like', "%$katakunci%")
                 ->paginate($jumlahbaris);
-            return view('Sidebar.inputbarang')->with('data', $data);
+            return view('admin.transaksi.list')->with('data', $data);
         }
         $data = Data::orderby('id', 'desc')->paginate($jumlahbaris);
-        return view('Sidebar.inputbarang')->with('data', $data);
+        return view('admin.transaksi.list')->with('data', $data);
     }
 
     /**
@@ -36,7 +36,7 @@ class DataController extends Controller
     public function create()
     {
         $kategori = kategori::all();
-        return view('Fungsi.create', compact('kategori'));
+        return view('admin.transaksi.create', compact('kategori'));
     }
 
     private function formatPriceToNumber($hargaString)
@@ -116,7 +116,7 @@ class DataController extends Controller
     public function edit(string $id)
     {
         $data = Data::where('id', $id)->first();
-        return view('fungsi.edit')->with('data', $data);
+        return view('admin.transaksi.edit')->with('data', $data);
     }
 
     /**
