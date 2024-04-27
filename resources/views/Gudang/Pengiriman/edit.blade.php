@@ -27,17 +27,17 @@
     <div class="my-3 p-3 bg-body rounded shadow-sm">
         <a href="{{ url('pengiriman') }}" class="btn btn-secondary">
             << Back </a>
-                <div class="mb-3 row">
+                <div class="mb-3 row" style="display: none;">
                     <label for="nama" class="col-sm-2 col-form-label">Items</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name='items' value="{{ $data->items }}"
-                            id="items">
+                            id="items" readonly>
                     </div>
                 </div>
-                <div class="mb-3 row">
+                <div class="mb-3 row" style="display: none;">
                     <label for="nama" class="col-sm-2 col-form-label">Kategori Operator</label>
                     <div class="col-sm-10">
-                        <select name="kategori_operator" id="kategori" class="form-control input">
+                        <select name="kategori_operator" id="kategori" class="form-control input" readonly>
                             <option value="{{ $data->operator }}">{{ $truck->operator }}</option>
                             @foreach ($trucks as $truck)
                                 <option value="{{ $truck->id_operator }}">{{ $truck->operator }}</option>
@@ -56,32 +56,32 @@
                         </select>
                     </div>
                 </div>
-                <div class="mb-3 row">
+                <div class="mb-3 row" style="display: none;">
                     <label for="jurusan" class="col-sm-2 col-form-label">Total Harga</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name='harga' value="{{ $data->total_harga }}"
-                            id="harga">
+                            id="harga" readonly>
                     </div>
                 </div>
-                <div class="mb-3 row">
+                <div class="mb-3 row" style="display: none;">
                     <label for="jurusan" class="col-sm-2 col-form-label">Alamat Pickup</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name='pickup_address'
-                            value="{{ $data->pickup_address }}" id="pickup_address">
+                            value="{{ $data->pickup_address }}" id="pickup_address" readonly>
                     </div>
                 </div>
-                <div class="mb-3 row">
+                <div class="mb-3 row" style="display: none;">
                     <label for="jurusan" class="col-sm-2 col-form-label">Alamat Pengiriman</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name='destination_address'
-                            value="{{ $data->destination_address }}" id="destination_address">
+                            value="{{ $data->destination_address }}" id="destination_address" readonly>
                     </div>
                 </div>
-                <div class="mb-3 row">
+                <div class="mb-3 row" style="display: none;">
                     <label for="jurusan" class="col-sm-2 col-form-label">Date</label>
                     <div class="col-sm-10">
                         <input type="date" class="form-control" name='date' id="date"
-                            value="{{ date('Y-m-d', strtotime($data->date)) }}">
+                            value="{{ date('Y-m-d', strtotime($data->date)) }}" readonly>
                     </div>
                 </div>
                 <div class="mb-3 row">

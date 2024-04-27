@@ -21,24 +21,23 @@
                         alt=""></a>
                 <ul class="list-unstyled components mb-5">
                     <li class="active">
-                        <a href="{{ url('barang') }}" aria-expanded="false" class="">Daftar Barang</a>
+                        <a href="" aria-expanded="false" class="">Home</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('barang') }}">Daftar Barang</a>
+                    </li>
+                    <li>
+                        <a href="{{ url('pengiriman') }}">Pengiriman Barang</a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu">
+                        </ul>
                     </li>
                     <li>
                         <a href="{{ url('surat-jalan') }}">Surat Jalan</a>
                     </li>
                     <li>
-                        <a href="">Pengiriman Barang</a>
-                        <ul class="collapse list-unstyled" id="pageSubmenu">
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="{{ url('admintruck') }}">Truck</a>
-                    </li>
-                    <li>
                         <a href="/logout">Log Out</a>
                     </li>
                 </ul>
-
             </div>
         </nav>
         <!-- Page Content  -->

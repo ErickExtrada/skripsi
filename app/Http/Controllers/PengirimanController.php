@@ -69,7 +69,6 @@ class PengirimanController extends Controller
             'pickup_address' => 'required',
             'destination_address' => 'required',
             'kategori_operator' => 'required',
-            'status' => 'required',
             'date' => 'required',
         ], [
             'items.required' => 'item barang pengiriman mohon di isi',
@@ -77,7 +76,6 @@ class PengirimanController extends Controller
             'kategori_operator.required' => 'kategori operator mohon di isi',
             'pickup_address.required' => 'alamat pickup mohon di isi',
             'destination_address.required' => 'alamat pengiriman mohon di isi',
-            'status.required' => 'status mohon di isi',
             'date.required' => 'date mohon di isi',
         ]);
 
@@ -133,7 +131,6 @@ class PengirimanController extends Controller
             'kategori_operator' => 'required',
             'pickup_address' => 'required',
             'destination_address' => 'required',
-            'status' => 'required',
             'date' => 'required',
         ], [
             'items.required' => 'item barang pengiriman mohon di isi',
@@ -141,7 +138,6 @@ class PengirimanController extends Controller
             'kategori_operator.required' => 'kategori operator mohon di isi',
             'pickup_address.required' => 'alamat pickup mohon di isi',
             'destination_address.required' => 'alamat pengiriman mohon di isi',
-            'status.required' => 'status mohon di isi',
             'date.required' => 'date mohon di isi',
         ]);
 
@@ -149,7 +145,7 @@ class PengirimanController extends Controller
             'pengiriman_id' => uniqid(),
             'items' => $request->items,
             'total_harga' => $this->formatPriceToNumber($request->harga),
-            'status' => $request->status,
+            'status' => $request->status ?? 'Pending',
             'pickup_address' => $request->pickup_address,
             'destination_address' => $request->destination_address,
             'operator' => $request->kategori_operator,
